@@ -1,0 +1,33 @@
+{
+  "nav": {
+    "sanatci": "Sanatçı",
+    "iletisim": "İletişim"
+  },
+  "home": {
+    "title": "Ersun Türköz",
+    "subtitle": "Seramik Heykel ve Resim",
+    "sanatciKart": "Sanatçı",
+    "sanatciAciklama": "Sanatçı hakkında"
+  },
+  "sanatci": {
+    "title": "Sanatçı",
+    "body": "Sanatçı biyografisi buraya gelecek."
+  },
+  "seriDetay": {
+    "bulunamadi": "Bu seri bulunamadı.",
+    "anasayfayaDon": "Anasayfaya dön"
+  },
+  "eserModal": {
+    "kapat": "Kapat",
+    "oncekiGorsel": "Önceki görsel",
+    "sonrakiGorsel": "Sonraki görsel",
+    "ilgileniyorum": "Bu eser ile ilgileniyorum"
+  },
+  "iletisim": {
+    "title": "İletişim",
+    "body": "İletişim bilgileri buraya gelecek."
+  },
+  "footer": {
+    "hakSaklidir": "Tüm hakları saklıdır."
+  }
+}
