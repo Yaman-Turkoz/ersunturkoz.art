@@ -4,7 +4,20 @@
 
 body {
   margin: 0;
-  font-family: system-ui, sans-serif;
+  font-family: var(--font-body);
+  color: var(--color-navy);
+  background: #fff;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-heading);
+  font-weight: 600;
+}
+
+a {
+  color: var(--color-slate);
 }
 
 #root {
@@ -15,7 +28,11 @@ body {
 
 main {
   flex: 1;
+  display: flex;
+  flex-direction: column;
 }
+
+/* Header */
 
 .site-header {
   display: flex;
@@ -23,23 +40,57 @@ main {
   justify-content: space-between;
   gap: 24px;
   padding: 16px 24px;
-  border-bottom: 1px solid #ddd;
+  background: var(--color-navy-darkest);
+  color: var(--color-mist);
 }
 
 .site-logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-family: var(--font-heading);
   font-weight: 600;
+  letter-spacing: 0.06em;
   text-decoration: none;
-  color: inherit;
+  color: var(--color-mist);
+}
+
+.site-logo-icon {
+  max-height: 48px;
+  width: auto;
+  display: block;
 }
 
 .site-nav {
   display: flex;
-  gap: 16px;
+  gap: 24px;
 }
 
 .site-nav a {
+  position: relative;
   text-decoration: none;
-  color: inherit;
+  color: var(--color-mist);
+  font-weight: 500;
+  font-size: 0.95rem;
+  letter-spacing: 0.04em;
+}
+
+.site-nav a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 100%;
+  height: 1px;
+  background: var(--color-mist);
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 0.3s ease;
+}
+
+.site-nav a:hover::after,
+.site-nav a:focus-visible::after {
+  transform: scaleX(1);
 }
 
 .lang-switcher {
@@ -48,43 +99,121 @@ main {
 }
 
 .lang-switcher button {
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  font-weight: 500;
   background: none;
-  border: 1px solid #ccc;
+  color: var(--color-mist);
+  border: 1px solid var(--color-slate);
   border-radius: 4px;
   padding: 4px 8px;
   cursor: pointer;
+  transition: border-color 0.3s ease;
+}
+
+.lang-switcher button:hover {
+  border-color: var(--color-mist);
 }
 
 .lang-switcher button.active {
   font-weight: 600;
-  border-color: #333;
+  border-color: var(--color-mist);
 }
+
+/* Footer */
 
 .site-footer {
   padding: 16px 24px;
-  border-top: 1px solid #ddd;
+  background: var(--color-navy-darkest);
+  color: var(--color-mist);
   text-align: center;
   font-size: 0.85rem;
 }
 
+/* Generic pages */
+
 .page {
-  padding: 24px;
+  padding: 40px 24px;
 }
+
+/* Anasayfa */
+
+.hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 8px;
+  padding: 80px 24px;
+  background: var(--color-navy-darkest);
+  color: var(--color-mist);
+}
+
+.hero-logo {
+  max-width: 400px;
+  width: 100%;
+  height: auto;
+}
+
+.hero h1 {
+  margin: 16px 0 0;
+  font-weight: 400;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.hero .subtitle {
+  margin: 0;
+  color: var(--color-slate);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+}
+
+.tanitim {
+  background: var(--color-mist);
+  color: var(--color-navy);
+  text-align: center;
+  padding: 64px 24px;
+}
+
+.tanitim h2 {
+  margin: 0 0 12px;
+}
+
+.tanitim p {
+  margin: 0 auto;
+  max-width: 560px;
+}
+
+.seriler {
+  background: #fff;
+  padding: 64px 24px;
+}
+
+/* Kartlar */
 
 .kart-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   gap: 16px;
+}
+
+.page .kart-grid {
   margin-top: 24px;
 }
 
 .kart {
   display: block;
-  border: 1px solid #ddd;
+  border: 1px solid var(--color-mist);
   border-radius: 8px;
   padding: 16px;
   text-decoration: none;
-  color: inherit;
+  color: var(--color-navy);
+  overflow: hidden;
+  cursor: pointer;
+  box-shadow: 0 1px 3px rgba(13, 19, 33, 0.08);
 }
 
 .kart img {
@@ -94,14 +223,30 @@ main {
   margin-bottom: 8px;
 }
 
-.kart {
-  cursor: pointer;
+@media (prefers-reduced-motion: no-preference) {
+  .kart {
+    transition: box-shadow 0.3s ease;
+  }
+
+  .kart img {
+    transition: transform 0.3s ease;
+  }
+
+  .kart:hover {
+    box-shadow: 0 8px 24px rgba(13, 19, 33, 0.18);
+  }
+
+  .kart:hover img {
+    transform: scale(1.04);
+  }
 }
+
+/* Eser modal */
 
 .eser-modal-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.7);
+  background: rgba(13, 19, 33, 0.75);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -130,6 +275,7 @@ main {
   line-height: 1;
   cursor: pointer;
   padding: 8px;
+  color: var(--color-navy);
 }
 
 .eser-modal-galeri {
@@ -151,13 +297,14 @@ main {
   top: 50%;
   transform: translateY(-50%);
   background: rgba(255, 255, 255, 0.85);
-  border: 1px solid #ccc;
+  border: 1px solid var(--color-mist);
   border-radius: 50%;
   width: 40px;
   height: 40px;
   font-size: 1.5rem;
   line-height: 1;
   cursor: pointer;
+  color: var(--color-navy);
 }
 
 .eser-modal-ok-onceki {
@@ -172,11 +319,24 @@ main {
   margin-top: 16px;
 }
 
+.eser-modal-bilgi p {
+  color: var(--color-slate);
+}
+
 .eser-modal-ilgileniyorum {
   margin-top: 16px;
   padding: 10px 20px;
-  border: 1px solid #333;
+  font-family: var(--font-body);
+  font-weight: 500;
+  border: 1px solid var(--color-navy);
   border-radius: 4px;
   background: none;
+  color: var(--color-navy);
   cursor: pointer;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.eser-modal-ilgileniyorum:hover {
+  background: var(--color-navy);
+  color: var(--color-mist);
 }

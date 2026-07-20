@@ -1,0 +1,9 @@
+:root {
+  --color-navy-darkest: #0D1321;
+  --color-navy: #1A2A44;
+  --color-slate: #4A5C72;
+  --color-mist: #D9DEE4;
+
+  --font-heading: 'Cinzel', serif;
+  --font-body: 'Montserrat', sans-serif;
+}

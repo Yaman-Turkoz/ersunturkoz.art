@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
+import { motion } from 'motion/react'
 import { urlFor } from '../lib/sanity'
 
 function EserModal({ eser, onClose }) {
@@ -32,8 +33,22 @@ function EserModal({ eser, onClose }) {
   }
 
   return (
-    <div className="eser-modal-overlay" onClick={onClose}>
-      <div className="eser-modal" onClick={(e) => e.stopPropagation()}>
+    <motion.div
+      className="eser-modal-overlay"
+      onClick={onClose}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.25, ease: 'easeOut' }}
+    >
+      <motion.div
+        className="eser-modal"
+        onClick={(e) => e.stopPropagation()}
+        initial={{ opacity: 0, scale: 0.95 }}
+        animate={{ opacity: 1, scale: 1 }}
+        exit={{ opacity: 0, scale: 0.97 }}
+        transition={{ duration: 0.3, ease: 'easeOut' }}
+      >
         <button
           type="button"
           className="eser-modal-kapat"
@@ -85,8 +100,8 @@ function EserModal({ eser, onClose }) {
         >
           {t('eserModal.ilgileniyorum')}
         </button>
-      </div>
-    </div>
+      </motion.div>
+    </motion.div>
   )
 }
 

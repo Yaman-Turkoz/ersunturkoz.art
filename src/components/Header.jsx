@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
+import logoIcon from '../assets/logo/logo-icon.png'
 
 const DILLER = [
   { kod: 'tr', etiket: 'TR' },
@@ -13,7 +14,8 @@ function Header() {
   return (
     <header className="site-header">
       <Link to="/" className="site-logo">
-        Ersun Türköz
+        <img src={logoIcon} alt="" className="site-logo-icon" />
+        <span>Ersun Türköz</span>
       </Link>
 
       <nav className="site-nav">

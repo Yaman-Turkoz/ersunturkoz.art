@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
+import { AnimatePresence } from 'motion/react'
 import { client, urlFor } from '../lib/sanity'
 import { SERI_DETAY_QUERY } from '../lib/queries'
 import EserModal from '../components/EserModal'
@@ -57,7 +58,9 @@ function SeriDetay() {
         ))}
       </div>
 
-      {seciliEser && <EserModal eser={seciliEser} onClose={() => setSeciliEser(null)} />}
+      <AnimatePresence>
+        {seciliEser && <EserModal eser={seciliEser} onClose={() => setSeciliEser(null)} />}
+      </AnimatePresence>
     </section>
   )
 }
