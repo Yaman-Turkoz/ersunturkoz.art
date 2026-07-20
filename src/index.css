@@ -141,10 +141,10 @@ main {
 .hero {
   position: relative;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: flex-start;
   min-height: 100vh;
-  padding: 24px clamp(24px, 5vw, 80px);
+  padding: clamp(32px, 6vh, 80px) clamp(16px, 3vw, 56px);
   background: var(--color-navy-darkest);
   color: var(--color-mist);
   overflow: hidden;
@@ -162,11 +162,11 @@ main {
   object-position: bottom right;
   pointer-events: none;
   -webkit-mask-image:
-    linear-gradient(to right, transparent 0%, rgba(0, 0, 0, 0.15) 28%, black 65%),
+    linear-gradient(to right, transparent 0%, rgba(0, 0, 0, 0.3) 25%, black 60%),
     linear-gradient(to top, transparent 0%, black 35%);
   -webkit-mask-composite: source-in;
   mask-image:
-    linear-gradient(to right, transparent 0%, rgba(0, 0, 0, 0.15) 28%, black 65%),
+    linear-gradient(to right, transparent 0%, rgba(0, 0, 0, 0.3) 25%, black 60%),
     linear-gradient(to top, transparent 0%, black 35%);
   mask-composite: intersect;
 }
@@ -174,7 +174,7 @@ main {
 .hero-logo {
   position: relative;
   z-index: 2;
-  max-width: min(52vw, 780px);
+  max-width: min(58vw, 880px);
   width: 100%;
   height: auto;
 }
