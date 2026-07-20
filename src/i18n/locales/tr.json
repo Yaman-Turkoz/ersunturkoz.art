@@ -1,6 +1,7 @@
 {
   "nav": {
     "sanatci": "Sanatçı",
+    "eserler": "Eserler",
     "iletisim": "İletişim"
   },
   "home": {
@@ -9,12 +10,14 @@
     "tanitimBaslik": "Sanatın izinde",
     "tanitimMetin": "Seramik heykel ve resim çalışmalarından oluşan seriler, mitolojiden ve yaşamdan izler taşır.",
     "sanatciKesfet": "Sanatçıyı keşfedin",
+    "koleksiyonlar": "Koleksiyonlar",
     "seriEtiket": "Koleksiyon",
     "sanatciKart": "Sanatçı",
     "sanatciAciklama": "Sanatçı hakkında"
   },
   "sanatci": {
     "title": "Sanatçı",
+    "isim": "Ersun Türköz",
     "body": "Sanatçı biyografisi buraya gelecek."
   },
   "seriDetay": {

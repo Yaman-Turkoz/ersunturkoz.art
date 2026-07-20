@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { motion } from 'motion/react'
 import { client, urlFor } from '../lib/sanity'
@@ -15,6 +15,7 @@ const sectionReveal = {
 
 function Anasayfa() {
   const { t } = useTranslation()
+  const location = useLocation()
   const [seriler, setSeriler] = useState([])
   const [siteAyarlari, setSiteAyarlari] = useState(null)
 
@@ -22,6 +23,16 @@ function Anasayfa() {
     client.fetch(SERILER_ANASAYFA_QUERY).then(setSeriler)
     client.fetch(SITE_AYARLARI_QUERY).then(setSiteAyarlari)
   }, [])
+
+  useEffect(() => {
+    const hedef = location.state?.scrollTo
+    if (!hedef) return
+    const zamanlayici = setTimeout(() => {
+      document.getElementById(hedef)?.scrollIntoView({ block: 'start' })
+    }, 120)
+    window.history.replaceState({}, '')
+    return () => clearTimeout(zamanlayici)
+  }, [location.state])
 
   return (
     <div className="page-anasayfa">
@@ -47,7 +58,7 @@ function Anasayfa() {
         />
       </section>
 
-      <motion.section className="tanitim" {...sectionReveal}>
+      <motion.section className="tanitim" id="sanatci-bolum" {...sectionReveal}>
         <div className="tanitim-icerik">
           {siteAyarlari?.sanatciFotografi && (
             <div className="tanitim-foto">
@@ -67,21 +78,24 @@ function Anasayfa() {
         </div>
       </motion.section>
 
-      <motion.section className="seriler" {...sectionReveal}>
-        <div className="kart-grid">
-          {seriler.map((seri) => (
-            <Link key={seri._id} to={`/eserler/${seri.slug}`} className="kart">
-              <div className="kart-gorsel-alan">
-                {seri.kapakGorseli && (
-                  <img src={urlFor(seri.kapakGorseli).width(500).height(667).fit('crop').url()} alt="" />
-                )}
-              </div>
-              <div className="kart-bilgi">
-                <h2>{seri.baslik}</h2>
-                <span className="kart-altbilgi">{t('home.seriEtiket')}</span>
-              </div>
-            </Link>
-          ))}
+      <motion.section className="seriler" id="koleksiyonlar" {...sectionReveal}>
+        <div className="seriler-ic">
+          <h2 className="bolum-baslik">{t('home.koleksiyonlar')}</h2>
+          <div className="kart-grid">
+            {seriler.map((seri) => (
+              <Link key={seri._id} to={`/eserler/${seri.slug}`} className="kart">
+                <div className="kart-gorsel-alan">
+                  {seri.kapakGorseli && (
+                    <img src={urlFor(seri.kapakGorseli).width(500).height(667).fit('crop').url()} alt="" />
+                  )}
+                </div>
+                <div className="kart-bilgi">
+                  <h2>{seri.baslik}</h2>
+                  <span className="kart-altbilgi">{t('home.seriEtiket')}</span>
+                </div>
+              </Link>
+            ))}
+          </div>
         </div>
       </motion.section>
     </div>
