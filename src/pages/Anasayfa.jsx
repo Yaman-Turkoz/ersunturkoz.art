@@ -26,25 +26,25 @@ function Anasayfa() {
   return (
     <div className="page-anasayfa">
       <section className="hero">
+        {siteAyarlari?.heroEserGorseli && (
+          <motion.img
+            src={urlFor(siteAyarlari.heroEserGorseli).width(1200).url()}
+            alt=""
+            className="hero-eser-gorseli"
+            initial={{ opacity: 0, x: -50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.9, ease: 'easeOut' }}
+          />
+        )}
+
         <motion.img
           src={logoFull}
           alt="Ersun Türköz"
           className="hero-logo"
-          initial={{ opacity: 0, x: -40 }}
+          initial={{ opacity: 0, x: 50 }}
           animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8, ease: 'easeOut' }}
+          transition={{ duration: 0.9, ease: 'easeOut' }}
         />
-
-        {siteAyarlari?.heroEserGorseli && (
-          <motion.img
-            src={urlFor(siteAyarlari.heroEserGorseli).width(900).url()}
-            alt=""
-            className="hero-eser-gorseli"
-            initial={{ opacity: 0, x: 40 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, ease: 'easeOut', delay: 0.05 }}
-          />
-        )}
       </section>
 
       <motion.section className="tanitim" {...sectionReveal}>
