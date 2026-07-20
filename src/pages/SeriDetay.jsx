@@ -5,6 +5,7 @@ import { AnimatePresence } from 'motion/react'
 import { client, urlFor } from '../lib/sanity'
 import { SERI_DETAY_QUERY } from '../lib/queries'
 import EserModal from '../components/EserModal'
+import GeriButonu from '../components/GeriButonu'
 
 function SeriDetay() {
   const { seriSlug } = useParams()
@@ -33,6 +34,7 @@ function SeriDetay() {
   return (
     <div className="page-seri-detay">
       <header className="seri-detay-header">
+        <GeriButonu />
         <h1>{seri.baslik}</h1>
         {seri.aciklama && <p>{seri.aciklama}</p>}
       </header>

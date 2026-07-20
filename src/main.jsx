@@ -7,6 +7,12 @@ import './styles/tokens.css'
 import './index.css'
 import App from './App.jsx'
 
+// Tarayıcının sayfa yenilemede eski scroll konumunu geri yüklemesini kapat;
+// böylece anasayfa/sayfalar her zaman en üstten açılır.
+if ('scrollRestoration' in window.history) {
+  window.history.scrollRestoration = 'manual'
+}
+
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <BrowserRouter>

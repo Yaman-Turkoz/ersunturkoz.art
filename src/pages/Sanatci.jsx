@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next'
 import { motion } from 'motion/react'
 import { client, urlFor } from '../lib/sanity'
 import { SITE_AYARLARI_QUERY } from '../lib/queries'
+import GeriButonu from '../components/GeriButonu'
 
 function Sanatci() {
   const { t } = useTranslation()
@@ -14,6 +15,7 @@ function Sanatci() {
 
   return (
     <div className="page-sanatci">
+      <GeriButonu />
       <div className="sanatci-ic">
         <motion.div
           className="sanatci-foto"

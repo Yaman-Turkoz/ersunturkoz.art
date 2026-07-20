@@ -2,6 +2,7 @@ import { Routes, Route, useLocation } from 'react-router-dom'
 import { AnimatePresence, motion } from 'motion/react'
 import Header from './components/Header'
 import Footer from './components/Footer'
+import ScrollToTop from './components/ScrollToTop'
 import Anasayfa from './pages/Anasayfa'
 import Sanatci from './pages/Sanatci'
 import SeriDetay from './pages/SeriDetay'
@@ -12,6 +13,7 @@ function App() {
 
   return (
     <>
+      <ScrollToTop />
       <Header />
       <AnimatePresence mode="wait">
         <motion.main
