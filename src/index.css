@@ -143,8 +143,8 @@ main {
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  min-height: 90vh;
-  padding: 24px clamp(32px, 10vw, 140px);
+  min-height: 100vh;
+  padding: 24px clamp(24px, 5vw, 80px);
   background: var(--color-navy-darkest);
   color: var(--color-mist);
   overflow: hidden;
@@ -155,26 +155,26 @@ main {
   bottom: 0;
   right: 0;
   z-index: 1;
-  height: 90%;
+  height: 100%;
   width: auto;
-  max-width: 65%;
+  max-width: 72%;
   object-fit: contain;
   object-position: bottom right;
   pointer-events: none;
   -webkit-mask-image:
-    linear-gradient(to right, transparent 0%, rgba(0, 0, 0, 0.15) 30%, black 70%),
-    linear-gradient(to top, transparent 0%, black 40%);
+    linear-gradient(to right, transparent 0%, rgba(0, 0, 0, 0.15) 28%, black 65%),
+    linear-gradient(to top, transparent 0%, black 35%);
   -webkit-mask-composite: source-in;
   mask-image:
-    linear-gradient(to right, transparent 0%, rgba(0, 0, 0, 0.15) 30%, black 70%),
-    linear-gradient(to top, transparent 0%, black 40%);
+    linear-gradient(to right, transparent 0%, rgba(0, 0, 0, 0.15) 28%, black 65%),
+    linear-gradient(to top, transparent 0%, black 35%);
   mask-composite: intersect;
 }
 
 .hero-logo {
   position: relative;
   z-index: 2;
-  max-width: 600px;
+  max-width: min(52vw, 780px);
   width: 100%;
   height: auto;
 }
@@ -182,18 +182,18 @@ main {
 @media (max-width: 720px) {
   .hero {
     justify-content: center;
-    min-height: 70vh;
+    min-height: 80vh;
     padding: 48px 24px;
   }
 
   .hero-eser-gorseli {
-    height: 60%;
-    max-width: 80%;
+    height: 65%;
+    max-width: 85%;
     opacity: 0.5;
   }
 
   .hero-logo {
-    max-width: 300px;
+    max-width: 340px;
   }
 }
 
