@@ -18,12 +18,12 @@ function SeriDetay() {
   }, [seriSlug])
 
   if (seri === undefined) {
-    return <section className="page page-seri-detay" />
+    return <section className="page page-seri-detay-durum" />
   }
 
   if (!seri) {
     return (
-      <section className="page page-seri-detay">
+      <section className="page page-seri-detay-durum">
         <h1>{t('seriDetay.bulunamadi')}</h1>
         <Link to="/">{t('seriDetay.anasayfayaDon')}</Link>
       </section>
@@ -31,37 +31,47 @@ function SeriDetay() {
   }
 
   return (
-    <section className="page page-seri-detay">
-      <h1>{seri.baslik}</h1>
-      {seri.aciklama && <p>{seri.aciklama}</p>}
+    <div className="page-seri-detay">
+      <header className="seri-detay-header">
+        <h1>{seri.baslik}</h1>
+        {seri.aciklama && <p>{seri.aciklama}</p>}
+      </header>
 
-      <div className="kart-grid">
-        {seri.eserler.map((eser) => (
-          <div
-            key={eser._id}
-            className="kart"
-            role="button"
-            tabIndex={0}
-            onClick={() => setSeciliEser(eser)}
-            onKeyDown={(e) => {
-              if (e.key === 'Enter' || e.key === ' ') setSeciliEser(eser)
-            }}
-          >
-            {eser.gorseller?.[0] && (
-              <img src={urlFor(eser.gorseller[0]).width(400).height(300).fit('crop').url()} alt="" />
-            )}
-            <h2>{eser.baslik}</h2>
-            {(eser.yil || eser.teknik) && (
-              <p>{[eser.teknik, eser.yil].filter(Boolean).join(', ')}</p>
-            )}
-          </div>
-        ))}
-      </div>
+      <section className="seri-detay-icerik">
+        <div className="kart-grid eserler-grid">
+          {seri.eserler.map((eser) => (
+            <div
+              key={eser._id}
+              className="kart eser-kart"
+              role="button"
+              tabIndex={0}
+              onClick={() => setSeciliEser(eser)}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter' || e.key === ' ') setSeciliEser(eser)
+              }}
+            >
+              <div className="kart-gorsel-alan">
+                {eser.gorseller?.[0] && (
+                  <img src={urlFor(eser.gorseller[0]).width(500).height(667).fit('crop').url()} alt="" />
+                )}
+              </div>
+              <div className="kart-bilgi">
+                <h2>{eser.baslik}</h2>
+                {(eser.yil || eser.teknik) && (
+                  <span className="kart-altbilgi">
+                    {[eser.teknik, eser.yil].filter(Boolean).join(' · ')}
+                  </span>
+                )}
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
 
       <AnimatePresence>
         {seciliEser && <EserModal eser={seciliEser} onClose={() => setSeciliEser(null)} />}
       </AnimatePresence>
-    </section>
+    </div>
   )
 }
 

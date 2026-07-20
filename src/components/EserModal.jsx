@@ -22,7 +22,8 @@ function EserModal({ eser, onClose }) {
   if (!eser) return null
 
   const gorseller = eser.gorseller || []
-  const gosterilecekAltyazi = [eser.teknik, eser.yil].filter(Boolean).join(', ')
+  const gosterilecekAltyazi = [eser.teknik, eser.yil].filter(Boolean).join(' · ')
+  const cokluGorsel = gorseller.length > 1
 
   function oncekiGorsel() {
     setIndex((i) => (i === 0 ? gorseller.length - 1 : i - 1))
@@ -58,13 +59,17 @@ function EserModal({ eser, onClose }) {
           ×
         </button>
 
-        {gorseller.length > 0 && (
-          <div className="eser-modal-galeri">
-            <img
-              src={urlFor(gorseller[index]).width(900).height(700).fit('max').url()}
-              alt=""
-            />
-            {gorseller.length > 1 && (
+        <div className="eser-modal-galeri">
+          <div className="eser-modal-gorsel-cerceve">
+            {gorseller.length > 0 && (
+              <img
+                className="eser-modal-gorsel"
+                src={urlFor(gorseller[index]).width(1200).url()}
+                alt=""
+              />
+            )}
+
+            {cokluGorsel && (
               <>
                 <button
                   type="button"
@@ -82,24 +87,43 @@ function EserModal({ eser, onClose }) {
                 >
                   ›
                 </button>
+                <div className="eser-modal-sayac">
+                  {index + 1} / {gorseller.length}
+                </div>
               </>
             )}
           </div>
-        )}
+
+          {cokluGorsel && (
+            <div className="eser-modal-thumbnails">
+              {gorseller.map((gorsel, i) => (
+                <button
+                  key={gorsel._key || i}
+                  type="button"
+                  className={`eser-modal-thumb ${i === index ? 'active' : ''}`}
+                  onClick={() => setIndex(i)}
+                  aria-label={`${i + 1}`}
+                >
+                  <img src={urlFor(gorsel).width(120).height(120).fit('crop').url()} alt="" />
+                </button>
+              ))}
+            </div>
+          )}
+        </div>
 
         <div className="eser-modal-bilgi">
           {eser.baslik && <h2>{eser.baslik}</h2>}
-          {gosterilecekAltyazi && <p>{gosterilecekAltyazi}</p>}
-          {eser.aciklama && <p>{eser.aciklama}</p>}
-        </div>
+          {gosterilecekAltyazi && <p className="eser-modal-altyazi">{gosterilecekAltyazi}</p>}
+          {eser.aciklama && <p className="eser-modal-aciklama">{eser.aciklama}</p>}
 
-        <button
-          type="button"
-          className="eser-modal-ilgileniyorum"
-          onClick={() => console.log('ilgileniyorum:', eser._id)}
-        >
-          {t('eserModal.ilgileniyorum')}
-        </button>
+          <button
+            type="button"
+            className="eser-modal-ilgileniyorum"
+            onClick={() => console.log('ilgileniyorum:', eser._id)}
+          >
+            {t('eserModal.ilgileniyorum')}
+          </button>
+        </div>
       </motion.div>
     </motion.div>
   )

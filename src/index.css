@@ -200,22 +200,224 @@ main {
 .tanitim {
   background: var(--color-mist);
   color: var(--color-navy);
-  text-align: center;
-  padding: 64px 24px;
+  padding: clamp(56px, 9vw, 112px) 24px;
 }
 
-.tanitim h2 {
-  margin: 0 0 12px;
-}
-
-.tanitim p {
+.tanitim-icerik {
+  max-width: 1080px;
   margin: 0 auto;
-  max-width: 560px;
+  display: flex;
+  align-items: center;
+  gap: clamp(32px, 6vw, 80px);
+}
+
+.tanitim-foto {
+  flex: 0 0 40%;
+  max-width: 420px;
+}
+
+.tanitim-foto img {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  border-radius: 4px;
+  filter: grayscale(100%) contrast(1.04);
+  box-shadow: 0 16px 44px rgba(13, 19, 33, 0.28);
+}
+
+.tanitim-metin {
+  flex: 1;
+}
+
+.tanitim-metin h2 {
+  margin: 0 0 18px;
+  font-size: clamp(1.5rem, 3vw, 2.1rem);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.tanitim-metin p {
+  margin: 0 0 30px;
+  max-width: 520px;
+  line-height: 1.75;
+  color: var(--color-slate);
+}
+
+.tanitim-link {
+  display: inline-block;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.8rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--color-navy);
+  border-bottom: 1px solid var(--color-navy);
+  padding-bottom: 4px;
+  transition: color 0.3s ease, border-color 0.3s ease;
+}
+
+.tanitim-link:hover {
+  color: var(--color-slate);
+  border-color: var(--color-slate);
+}
+
+@media (max-width: 760px) {
+  .tanitim-icerik {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .tanitim-foto {
+    flex-basis: auto;
+    max-width: 300px;
+  }
+
+  .tanitim-metin p {
+    margin-left: auto;
+    margin-right: auto;
+  }
 }
 
 .seriler {
+  background: var(--color-navy-darkest);
+  padding: clamp(64px, 9vw, 104px) 24px;
+}
+
+.seriler .kart-grid {
+  max-width: 1080px;
+  margin: 0 auto;
+  justify-content: center;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 260px));
+  gap: 28px;
+}
+
+.seriler .kart {
+  padding: 0;
+  border: none;
+  border-radius: 6px;
+  background: var(--color-navy);
+  color: var(--color-mist);
+  box-shadow: 0 6px 22px rgba(0, 0, 0, 0.38);
+}
+
+.seriler .kart-gorsel-alan {
+  aspect-ratio: 3 / 4;
+  margin-bottom: 0;
+  border-radius: 0;
+  background: var(--color-slate);
+}
+
+.seriler .kart-bilgi {
+  padding: 16px 18px 22px;
+  text-align: center;
+}
+
+.seriler .kart-bilgi h2 {
+  margin: 0;
+  font-size: 1.2rem;
+  letter-spacing: 0.04em;
+  color: var(--color-mist);
+  transition: color 0.35s ease;
+}
+
+.seriler .kart-altbilgi {
+  display: block;
+  margin-top: 8px;
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: rgba(217, 222, 228, 0.55);
+}
+
+/* Seri detay sayfası */
+
+.page-seri-detay {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.page-seri-detay-durum {
+  text-align: center;
+}
+
+.seri-detay-header {
+  background: var(--color-navy-darkest);
+  color: var(--color-mist);
+  text-align: center;
+  padding: clamp(48px, 8vw, 96px) 24px;
+}
+
+.seri-detay-header h1 {
+  margin: 0;
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-mist);
+}
+
+.seri-detay-header p {
+  margin: 20px auto 0;
+  max-width: 620px;
+  line-height: 1.7;
+  color: rgba(217, 222, 228, 0.7);
+}
+
+.seri-detay-icerik {
+  flex: 1;
+  background: linear-gradient(180deg, #ffffff 0%, var(--color-mist) 100%);
+  padding: clamp(48px, 7vw, 88px) 24px;
+}
+
+.eserler-grid {
+  max-width: 1080px;
+  margin: 0 auto;
+  justify-content: center;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 260px));
+  gap: 28px;
+}
+
+.eser-kart {
+  padding: 0;
+  border: 1px solid rgba(26, 42, 68, 0.1);
+  border-radius: 6px;
   background: #fff;
-  padding: 64px 24px;
+  color: var(--color-navy);
+  box-shadow: 0 6px 20px rgba(13, 19, 33, 0.1);
+}
+
+.eser-kart .kart-gorsel-alan {
+  aspect-ratio: 3 / 4;
+  margin-bottom: 0;
+  border-radius: 0;
+  background: var(--color-mist);
+}
+
+.eser-kart .kart-bilgi {
+  padding: 16px 18px 20px;
+  text-align: center;
+}
+
+.eser-kart .kart-bilgi h2 {
+  margin: 0;
+  font-size: 1.15rem;
+  letter-spacing: 0.03em;
+  color: var(--color-navy);
+  transition: color 0.35s ease;
+}
+
+.eser-kart .kart-altbilgi {
+  display: block;
+  margin-top: 8px;
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-slate);
 }
 
 /* Kartlar */
@@ -280,6 +482,48 @@ main {
   .kart:hover img {
     transform: scale(1.04);
   }
+
+  .seriler .kart {
+    transition: transform 0.35s ease, box-shadow 0.35s ease;
+  }
+
+  .seriler .kart-gorsel-alan img {
+    transition: transform 0.35s ease;
+  }
+
+  .seriler .kart:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.5);
+  }
+
+  .seriler .kart:hover .kart-gorsel-alan img {
+    transform: scale(1.05);
+  }
+
+  .seriler .kart:hover .kart-bilgi h2 {
+    color: #fff;
+  }
+
+  .eser-kart {
+    transition: transform 0.35s ease, box-shadow 0.35s ease;
+  }
+
+  .eser-kart .kart-gorsel-alan img {
+    transition: transform 0.35s ease;
+  }
+
+  .eser-kart:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 18px 38px rgba(13, 19, 33, 0.2);
+  }
+
+  .eser-kart:hover .kart-gorsel-alan img {
+    transform: scale(1.05);
+  }
+
+  .eser-kart:hover .kart-bilgi h2 {
+    color: var(--color-slate);
+  }
 }
 
 /* Eser modal */
@@ -287,7 +531,7 @@ main {
 .eser-modal-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(13, 19, 33, 0.75);
+  background: rgba(13, 19, 33, 0.8);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -297,87 +541,219 @@ main {
 
 .eser-modal {
   position: relative;
+  display: flex;
   background: #fff;
   border-radius: 8px;
-  max-width: 720px;
+  max-width: 1000px;
   width: 100%;
   max-height: 90vh;
-  overflow-y: auto;
-  padding: 24px;
+  overflow: hidden;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5);
 }
 
 .eser-modal-kapat {
   position: absolute;
-  top: 8px;
-  right: 8px;
-  background: none;
-  border: none;
-  font-size: 1.75rem;
-  line-height: 1;
-  cursor: pointer;
-  padding: 8px;
-  color: var(--color-navy);
-}
-
-.eser-modal-galeri {
-  position: relative;
+  top: 14px;
+  right: 14px;
+  z-index: 5;
+  width: 38px;
+  height: 38px;
   display: flex;
   align-items: center;
   justify-content: center;
+  background: rgba(255, 255, 255, 0.9);
+  border: none;
+  border-radius: 50%;
+  font-size: 1.5rem;
+  line-height: 1;
+  color: var(--color-navy);
+  cursor: pointer;
+  box-shadow: 0 2px 10px rgba(13, 19, 33, 0.3);
+  transition: background 0.25s ease;
 }
 
-.eser-modal-galeri img {
+.eser-modal-kapat:hover {
+  background: #fff;
+}
+
+/* Galeri (sol / üst) */
+
+.eser-modal-galeri {
+  flex: 1.4;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  background: var(--color-navy-darkest);
+}
+
+.eser-modal-gorsel-cerceve {
+  position: relative;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 28px;
+  min-height: 0;
+}
+
+.eser-modal-gorsel {
   max-width: 100%;
-  max-height: 60vh;
+  max-height: 74vh;
+  object-fit: contain;
   display: block;
-  margin: 0 auto;
 }
 
 .eser-modal-ok {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background: rgba(255, 255, 255, 0.85);
-  border: 1px solid var(--color-mist);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
   border-radius: 50%;
-  width: 40px;
-  height: 40px;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(217, 222, 228, 0.3);
+  color: var(--color-mist);
   font-size: 1.5rem;
   line-height: 1;
   cursor: pointer;
-  color: var(--color-navy);
+  transition: background 0.25s ease;
+}
+
+.eser-modal-ok:hover {
+  background: rgba(255, 255, 255, 0.24);
 }
 
 .eser-modal-ok-onceki {
-  left: 8px;
+  left: 16px;
 }
 
 .eser-modal-ok-sonraki {
-  right: 8px;
+  right: 16px;
 }
+
+.eser-modal-sayac {
+  position: absolute;
+  bottom: 18px;
+  right: 18px;
+  padding: 4px 12px;
+  border-radius: 20px;
+  background: rgba(13, 19, 33, 0.6);
+  color: var(--color-mist);
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+}
+
+.eser-modal-thumbnails {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  padding: 12px 16px 18px;
+  overflow-x: auto;
+}
+
+.eser-modal-thumb {
+  flex: 0 0 auto;
+  width: 54px;
+  height: 54px;
+  padding: 0;
+  border: 2px solid transparent;
+  border-radius: 4px;
+  overflow: hidden;
+  background: none;
+  cursor: pointer;
+  opacity: 0.5;
+  transition: opacity 0.25s ease, border-color 0.25s ease;
+}
+
+.eser-modal-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.eser-modal-thumb:hover {
+  opacity: 1;
+}
+
+.eser-modal-thumb.active {
+  opacity: 1;
+  border-color: var(--color-mist);
+}
+
+/* Bilgi (sağ / alt) */
 
 .eser-modal-bilgi {
-  margin-top: 16px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: clamp(28px, 4vw, 44px) clamp(24px, 3vw, 36px);
+  overflow-y: auto;
 }
 
-.eser-modal-bilgi p {
+.eser-modal-bilgi h2 {
+  margin: 0;
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  letter-spacing: 0.04em;
+  color: var(--color-navy);
+}
+
+.eser-modal-altyazi {
+  margin: 12px 0 0;
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-slate);
+}
+
+.eser-modal-aciklama {
+  margin: 24px 0 0;
+  line-height: 1.75;
   color: var(--color-slate);
 }
 
 .eser-modal-ilgileniyorum {
-  margin-top: 16px;
-  padding: 10px 20px;
+  margin-top: 32px;
+  align-self: flex-start;
+  padding: 13px 28px;
   font-family: var(--font-body);
-  font-weight: 500;
-  border: 1px solid var(--color-navy);
+  font-weight: 600;
+  font-size: 0.8rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  border: none;
   border-radius: 4px;
-  background: none;
-  color: var(--color-navy);
+  background: var(--color-navy);
+  color: var(--color-mist);
   cursor: pointer;
-  transition: background 0.3s ease, color 0.3s ease;
+  transition: background 0.3s ease;
 }
 
 .eser-modal-ilgileniyorum:hover {
-  background: var(--color-navy);
-  color: var(--color-mist);
+  background: var(--color-navy-darkest);
+}
+
+@media (max-width: 760px) {
+  .eser-modal {
+    flex-direction: column;
+    overflow-y: auto;
+  }
+
+  .eser-modal-galeri {
+    flex: none;
+  }
+
+  .eser-modal-gorsel {
+    max-height: 50vh;
+  }
+
+  .eser-modal-bilgi {
+    flex: none;
+  }
 }

@@ -48,33 +48,38 @@ function Anasayfa() {
       </section>
 
       <motion.section className="tanitim" {...sectionReveal}>
-        <h2>{t('home.tanitimBaslik')}</h2>
-        <p>{t('home.tanitimMetin')}</p>
+        <div className="tanitim-icerik">
+          {siteAyarlari?.sanatciFotografi && (
+            <div className="tanitim-foto">
+              <img
+                src={urlFor(siteAyarlari.sanatciFotografi).width(600).height(800).fit('crop').url()}
+                alt=""
+              />
+            </div>
+          )}
+          <div className="tanitim-metin">
+            <h2>{t('home.tanitimBaslik')}</h2>
+            <p>{t('home.tanitimMetin')}</p>
+            <Link to="/sanatci" className="tanitim-link">
+              {t('home.sanatciKesfet')}
+            </Link>
+          </div>
+        </div>
       </motion.section>
 
       <motion.section className="seriler" {...sectionReveal}>
         <div className="kart-grid">
-          <Link to="/sanatci" className="kart">
-            <div className="kart-gorsel-alan">
-              {siteAyarlari?.sanatciFotografi && (
-                <img
-                  src={urlFor(siteAyarlari.sanatciFotografi).width(400).height(300).fit('crop').url()}
-                  alt=""
-                />
-              )}
-            </div>
-            <h2>{t('home.sanatciKart')}</h2>
-            <p>{t('home.sanatciAciklama')}</p>
-          </Link>
-
           {seriler.map((seri) => (
             <Link key={seri._id} to={`/eserler/${seri.slug}`} className="kart">
               <div className="kart-gorsel-alan">
                 {seri.kapakGorseli && (
-                  <img src={urlFor(seri.kapakGorseli).width(400).height(300).fit('crop').url()} alt="" />
+                  <img src={urlFor(seri.kapakGorseli).width(500).height(667).fit('crop').url()} alt="" />
                 )}
               </div>
-              <h2>{seri.baslik}</h2>
+              <div className="kart-bilgi">
+                <h2>{seri.baslik}</h2>
+                <span className="kart-altbilgi">{t('home.seriEtiket')}</span>
+              </div>
             </Link>
           ))}
         </div>
