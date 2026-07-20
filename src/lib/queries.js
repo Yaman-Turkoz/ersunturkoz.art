@@ -1,3 +1,10 @@
+export const SITE_AYARLARI_QUERY = `
+*[_id == "siteAyarlari"][0]{
+  sanatciFotografi,
+  heroEserGorseli
+}
+`
+
 export const SERILER_ANASAYFA_QUERY = `
 *[_type == "seri" && anasayfadaGoster == true] | order(orderRank asc) {
   _id,
