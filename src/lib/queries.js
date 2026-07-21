@@ -14,18 +14,25 @@ export const SERILER_ANASAYFA_QUERY = `
 }
 `
 
+export const SERGILER_QUERY = `
+*[_type == "sergi"] | order(orderRank asc) {
+  _id,
+  baslik,
+  aciklama,
+  gorseller
+}
+`
+
 export const SERI_DETAY_QUERY = `
 *[_type == "seri" && slug.current == $slug][0]{
   _id,
   baslik,
-  aciklama,
   kapakGorseli,
   "eserler": *[_type == "eser" && references(^._id)] | order(orderRank asc) {
     _id,
     baslik,
     gorseller,
     aciklama,
-    yil,
     teknik
   }
 }

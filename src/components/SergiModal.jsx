@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next'
 import { motion } from 'motion/react'
 import Galeri from './Galeri'
 
-function EserModal({ eser, onClose }) {
+function SergiModal({ sergi, onClose }) {
   const { t } = useTranslation()
 
   useEffect(() => {
@@ -14,9 +14,7 @@ function EserModal({ eser, onClose }) {
     return () => window.removeEventListener('keydown', onKeyDown)
   }, [onClose])
 
-  if (!eser) return null
-
-  const gosterilecekAltyazi = eser.teknik || ''
+  if (!sergi) return null
 
   return (
     <motion.div
@@ -28,7 +26,7 @@ function EserModal({ eser, onClose }) {
       transition={{ duration: 0.25, ease: 'easeOut' }}
     >
       <motion.div
-        className="eser-modal"
+        className="sergi-modal"
         onClick={(e) => e.stopPropagation()}
         initial={{ opacity: 0, scale: 0.95 }}
         animate={{ opacity: 1, scale: 1 }}
@@ -44,24 +42,10 @@ function EserModal({ eser, onClose }) {
           ×
         </button>
 
-        <Galeri gorseller={eser.gorseller || []} />
-
-        <div className="eser-modal-bilgi">
-          {eser.baslik && <h2>{eser.baslik}</h2>}
-          {gosterilecekAltyazi && <p className="eser-modal-altyazi">{gosterilecekAltyazi}</p>}
-          {eser.aciklama && <p className="eser-modal-aciklama">{eser.aciklama}</p>}
-
-          <button
-            type="button"
-            className="eser-modal-ilgileniyorum"
-            onClick={() => console.log('ilgileniyorum:', eser._id)}
-          >
-            {t('eserModal.ilgileniyorum')}
-          </button>
-        </div>
+        <Galeri gorseller={sergi.gorseller || []} />
       </motion.div>
     </motion.div>
   )
 }
 
-export default EserModal
+export default SergiModal

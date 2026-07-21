@@ -36,11 +36,10 @@ function SeriDetay() {
       <header className="seri-detay-header">
         <GeriButonu />
         <h1>{seri.baslik}</h1>
-        {seri.aciklama && <p>{seri.aciklama}</p>}
       </header>
 
       <section className="seri-detay-icerik">
-        <div className="kart-grid eserler-grid">
+        <div className="eserler-grid">
           {seri.eserler.map((eser) => (
             <div
               key={eser._id}
@@ -59,11 +58,6 @@ function SeriDetay() {
               </div>
               <div className="kart-bilgi">
                 <h2>{eser.baslik}</h2>
-                {(eser.yil || eser.teknik) && (
-                  <span className="kart-altbilgi">
-                    {[eser.teknik, eser.yil].filter(Boolean).join(' · ')}
-                  </span>
-                )}
               </div>
             </div>
           ))}

@@ -25,8 +25,7 @@ function Header() {
   return (
     <header className="site-header">
       <Link to="/" className="site-logo">
-        <img src={logoIcon} alt="" className="site-logo-icon" />
-        <span>Ersun Türköz</span>
+        <img src={logoIcon} alt="Ersun Türköz" className="site-logo-icon" />
       </Link>
 
       <div className="site-header-sag">
@@ -35,7 +34,10 @@ function Header() {
             {t('nav.sanatci')}
           </a>
           <a href="/#koleksiyonlar" onClick={(e) => bolumeKaydir(e, 'koleksiyonlar')}>
-            {t('nav.eserler')}
+            {t('nav.koleksiyonlar')}
+          </a>
+          <a href="/#sergiler" onClick={(e) => bolumeKaydir(e, 'sergiler')}>
+            {t('nav.sergiler')}
           </a>
           <Link to="/iletisim">{t('nav.iletisim')}</Link>
         </nav>

@@ -34,11 +34,6 @@ export const seri = defineType({
       },
     }),
     defineField({
-      name: 'aciklama',
-      title: 'Açıklama',
-      type: 'text',
-    }),
-    defineField({
       name: 'anasayfadaGoster',
       title: 'Anasayfada Göster',
       type: 'boolean',

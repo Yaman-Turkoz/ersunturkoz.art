@@ -1,9 +1,10 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
-import { motion } from 'motion/react'
+import { AnimatePresence, motion } from 'motion/react'
 import { client, urlFor } from '../lib/sanity'
-import { SERILER_ANASAYFA_QUERY, SITE_AYARLARI_QUERY } from '../lib/queries'
+import { SERILER_ANASAYFA_QUERY, SERGILER_QUERY, SITE_AYARLARI_QUERY } from '../lib/queries'
+import SergiModal from '../components/SergiModal'
 import logoFull from '../assets/logo/logo-full.png'
 
 const sectionReveal = {
@@ -17,22 +18,60 @@ function Anasayfa() {
   const { t } = useTranslation()
   const location = useLocation()
   const [seriler, setSeriler] = useState([])
+  const [sergiler, setSergiler] = useState([])
   const [siteAyarlari, setSiteAyarlari] = useState(null)
+  const [veriHazir, setVeriHazir] = useState(false)
+  const [seciliSergi, setSeciliSergi] = useState(null)
+  const bekleyenKaydirmaRef = useRef(null)
 
   useEffect(() => {
-    client.fetch(SERILER_ANASAYFA_QUERY).then(setSeriler)
-    client.fetch(SITE_AYARLARI_QUERY).then(setSiteAyarlari)
+    let iptal = false
+    Promise.all([
+      client.fetch(SERILER_ANASAYFA_QUERY),
+      client.fetch(SERGILER_QUERY),
+      client.fetch(SITE_AYARLARI_QUERY),
+    ])
+      .then(([serilerVerisi, sergilerVerisi, ayarlar]) => {
+        if (iptal) return
+        setSeriler(serilerVerisi)
+        setSergiler(sergilerVerisi)
+        setSiteAyarlari(ayarlar)
+      })
+      .finally(() => {
+        if (!iptal) setVeriHazir(true)
+      })
+    return () => {
+      iptal = true
+    }
   }, [])
 
+  // Kaydırma hedefini yakala: öncelik header'dan gelen state.scrollTo'da
+  // (yumuşak kaydırma); yoksa bir seriden dönüş bayrağı (anında koleksiyonlar).
   useEffect(() => {
-    const hedef = location.state?.scrollTo
+    const stateHedef = location.state?.scrollTo
+    const bayrakHedef = sessionStorage.getItem('anasayfaScroll')
+    const hedef = stateHedef || bayrakHedef
     if (!hedef) return
-    const zamanlayici = setTimeout(() => {
-      document.getElementById(hedef)?.scrollIntoView({ block: 'start' })
-    }, 120)
-    window.history.replaceState({}, '')
-    return () => clearTimeout(zamanlayici)
+    bekleyenKaydirmaRef.current = { hedef, yumusak: Boolean(stateHedef) }
+    if (bayrakHedef) sessionStorage.removeItem('anasayfaScroll')
+    if (stateHedef) window.history.replaceState({}, '')
   }, [location.state])
+
+  // Bekleyen kaydırmayı uygula. İçerik (özellikle Sanatçı fotoğrafı) yüklenince
+  // yükseklik değiştiği için veriHazir olana kadar hedefi tazeleyip yeniden
+  // konumlanır; nihai konumda hedefi temizler.
+  useEffect(() => {
+    if (!bekleyenKaydirmaRef.current) return
+    const { hedef, yumusak } = bekleyenKaydirmaRef.current
+    const kareId = requestAnimationFrame(() => {
+      document.getElementById(hedef)?.scrollIntoView({
+        block: 'start',
+        behavior: yumusak ? 'smooth' : 'instant',
+      })
+      if (veriHazir) bekleyenKaydirmaRef.current = null
+    })
+    return () => cancelAnimationFrame(kareId)
+  }, [seriler, sergiler, siteAyarlari, veriHazir])
 
   return (
     <div className="page-anasayfa">
@@ -83,7 +122,12 @@ function Anasayfa() {
           <h2 className="bolum-baslik">{t('home.koleksiyonlar')}</h2>
           <div className="kart-grid">
             {seriler.map((seri) => (
-              <Link key={seri._id} to={`/eserler/${seri.slug}`} className="kart">
+              <Link
+                key={seri._id}
+                to={`/eserler/${seri.slug}`}
+                className="kart"
+                onClick={() => sessionStorage.setItem('anasayfaScroll', 'koleksiyonlar')}
+              >
                 <div className="kart-gorsel-alan">
                   {seri.kapakGorseli && (
                     <img src={urlFor(seri.kapakGorseli).width(500).height(667).fit('crop').url()} alt="" />
@@ -98,6 +142,61 @@ function Anasayfa() {
           </div>
         </div>
       </motion.section>
+
+      {sergiler.length > 0 && (
+        <motion.section className="sergiler" id="sergiler" {...sectionReveal}>
+          <div className="sergiler-ic">
+            <h2 className="bolum-baslik">{t('home.gecmisSergiler')}</h2>
+            <div className="sergi-liste">
+              {sergiler.map((sergi) => (
+                <div key={sergi._id} className="sergi-satir">
+                  <button
+                    type="button"
+                    className="sergi-gorsel"
+                    onClick={() => setSeciliSergi(sergi)}
+                    aria-label={sergi.baslik}
+                  >
+                    {sergi.gorseller?.[0] && (
+                      <img
+                        src={urlFor(sergi.gorseller[0]).width(600).height(450).fit('crop').url()}
+                        alt=""
+                      />
+                    )}
+                    <span className="sergi-gorsel-overlay" aria-hidden="true">
+                      <svg
+                        viewBox="0 0 24 24"
+                        width="28"
+                        height="28"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="1.7"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      >
+                        <path d="M15 3h6v6" />
+                        <path d="M9 21H3v-6" />
+                        <path d="M21 3l-7 7" />
+                        <path d="M3 21l7-7" />
+                      </svg>
+                    </span>
+                  </button>
+
+                  <div className="sergi-metin">
+                    <h3>{sergi.baslik}</h3>
+                    {sergi.aciklama && <p>{sergi.aciklama}</p>}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </motion.section>
+      )}
+
+      <AnimatePresence>
+        {seciliSergi && (
+          <SergiModal sergi={seciliSergi} onClose={() => setSeciliSergi(null)} />
+        )}
+      </AnimatePresence>
     </div>
   )
 }

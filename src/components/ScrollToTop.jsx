@@ -8,6 +8,9 @@ function ScrollToTop() {
     // Header'dan bir bölüme kaydırma isteniyorsa (state.scrollTo) en üste
     // atlama; o kaydırmayı Anasayfa hallediyor.
     if (state?.scrollTo) return
+    // Bir seriden anasayfaya dönüşte de en üste atlama; Anasayfa
+    // koleksiyonlar bölümüne kaydıracak.
+    if (pathname === '/' && sessionStorage.getItem('anasayfaScroll')) return
     window.scrollTo({ top: 0, left: 0, behavior: 'instant' })
   }, [pathname, state])
 

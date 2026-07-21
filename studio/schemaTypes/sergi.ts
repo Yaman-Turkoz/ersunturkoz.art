@@ -1,12 +1,12 @@
 import {defineType, defineField, defineArrayMember} from 'sanity'
-import {ImagesIcon} from '@sanity/icons/Images'
+import {CalendarIcon} from '@sanity/icons/Calendar'
 import {orderRankField, orderRankOrdering} from '@sanity/orderable-document-list'
 
-export const eser = defineType({
-  name: 'eser',
-  title: 'Eser',
+export const sergi = defineType({
+  name: 'sergi',
+  title: 'Sergi',
   type: 'document',
-  icon: ImagesIcon,
+  icon: CalendarIcon,
   orderings: [orderRankOrdering],
   fields: [
     defineField({
@@ -14,6 +14,11 @@ export const eser = defineType({
       title: 'Başlık',
       type: 'string',
       validation: (rule) => rule.required(),
+    }),
+    defineField({
+      name: 'aciklama',
+      title: 'Açıklama',
+      type: 'text',
     }),
     defineField({
       name: 'gorseller',
@@ -29,29 +34,11 @@ export const eser = defineType({
       ],
       validation: (rule) => rule.required().min(1),
     }),
-    defineField({
-      name: 'aciklama',
-      title: 'Açıklama',
-      type: 'text',
-    }),
-    defineField({
-      name: 'teknik',
-      title: 'Teknik',
-      type: 'string',
-    }),
-    defineField({
-      name: 'seri',
-      title: 'Seri',
-      type: 'reference',
-      to: [{type: 'seri'}],
-      validation: (rule) => rule.required(),
-    }),
-    orderRankField({type: 'eser'}),
+    orderRankField({type: 'sergi'}),
   ],
   preview: {
     select: {
       title: 'baslik',
-      subtitle: 'seri.baslik',
       media: 'gorseller.0',
     },
   },

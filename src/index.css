@@ -9,7 +9,8 @@
 }
 
 #sanatci-bolum,
-#koleksiyonlar {
+#koleksiyonlar,
+#sergiler {
   scroll-margin-top: 96px;
 }
 
@@ -53,7 +54,7 @@ main {
   align-items: center;
   justify-content: space-between;
   gap: 24px;
-  padding: 16px 24px;
+  padding: 12px 24px;
   background: var(--color-navy-darkest);
   color: var(--color-mist);
 }
@@ -67,16 +68,11 @@ main {
 .site-logo {
   display: flex;
   align-items: center;
-  gap: 12px;
-  font-family: var(--font-heading);
-  font-weight: 600;
-  letter-spacing: 0.06em;
   text-decoration: none;
-  color: var(--color-mist);
 }
 
 .site-logo-icon {
-  max-height: 48px;
+  max-height: 50px;
   width: auto;
   display: block;
 }
@@ -90,10 +86,11 @@ main {
   position: relative;
   text-decoration: none;
   color: var(--color-mist);
-  font-family: var(--font-body);
-  font-weight: 500;
-  font-size: 0.9rem;
+  font-family: var(--font-heading);
+  font-weight: 400;
+  font-size: 0.8rem;
   letter-spacing: 0.1em;
+  white-space: nowrap;
 }
 
 .site-nav a::after {
@@ -121,8 +118,9 @@ main {
 
 .lang-switcher button {
   font-family: var(--font-body);
-  font-size: 0.8rem;
+  font-size: 0.75rem;
   font-weight: 500;
+  letter-spacing: 0.04em;
   background: none;
   color: var(--color-mist);
   border: 1px solid var(--color-slate);
@@ -302,20 +300,20 @@ main {
 
 .seriler {
   background: var(--color-navy-darkest);
-  padding: clamp(64px, 9vw, 104px) 24px;
+  padding: clamp(36px, 5vw, 56px) 24px clamp(56px, 8vw, 88px);
 }
 
 .seriler-ic {
-  max-width: 1080px;
+  max-width: 1200px;
   margin: 0 auto;
 }
 
 .bolum-baslik {
-  margin: 0 0 32px;
+  margin: 0 0 36px;
   font-size: clamp(1.6rem, 3vw, 2.2rem);
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  text-align: left;
+  text-align: center;
   color: var(--color-mist);
 }
 
@@ -363,6 +361,126 @@ main {
   letter-spacing: 0.24em;
   text-transform: uppercase;
   color: rgba(217, 222, 228, 0.55);
+}
+
+/* Geçmiş Sergiler */
+
+.sergiler {
+  background: var(--color-mist);
+  color: var(--color-navy);
+  padding: clamp(56px, 8vw, 96px) 24px;
+}
+
+.sergiler-ic {
+  max-width: 1080px;
+  margin: 0 auto;
+}
+
+.sergiler .bolum-baslik {
+  color: var(--color-navy);
+}
+
+.sergi-liste {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(32px, 5vw, 56px);
+  margin-top: 44px;
+}
+
+.sergi-satir {
+  display: flex;
+  align-items: center;
+  gap: clamp(24px, 5vw, 56px);
+}
+
+.sergi-gorsel {
+  position: relative;
+  flex: 0 0 42%;
+  max-width: 420px;
+  display: block;
+  padding: 0;
+  border: none;
+  background: none;
+  border-radius: 4px;
+  overflow: hidden;
+  cursor: pointer;
+  box-shadow: 0 10px 30px rgba(13, 19, 33, 0.18);
+}
+
+.sergi-gorsel img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+.sergi-gorsel-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(13, 19, 33, 0);
+  color: var(--color-mist);
+  opacity: 0;
+}
+
+.sergi-gorsel:hover .sergi-gorsel-overlay,
+.sergi-gorsel:focus-visible .sergi-gorsel-overlay {
+  opacity: 1;
+  background: rgba(13, 19, 33, 0.34);
+}
+
+.sergi-metin {
+  flex: 1;
+}
+
+.sergi-metin h3 {
+  margin: 0 0 12px;
+  font-family: var(--font-heading);
+  font-size: clamp(1.3rem, 2.4vw, 1.8rem);
+  letter-spacing: 0.04em;
+  color: var(--color-navy);
+}
+
+.sergi-metin p {
+  margin: 0;
+  max-width: 520px;
+  line-height: 1.75;
+  color: var(--color-slate);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .sergi-gorsel img {
+    transition: transform 0.35s ease;
+  }
+
+  .sergi-gorsel-overlay {
+    transition: opacity 0.3s ease, background 0.3s ease;
+  }
+
+  .sergi-gorsel:hover img {
+    transform: scale(1.03);
+  }
+}
+
+@media (max-width: 760px) {
+  .sergi-satir {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .sergi-gorsel {
+    flex-basis: auto;
+    max-width: 100%;
+    width: 100%;
+  }
+
+  .sergi-metin p {
+    margin-left: auto;
+    margin-right: auto;
+  }
 }
 
 /* Geri butonu */
@@ -417,19 +535,19 @@ main {
   background: var(--color-navy-darkest);
   color: var(--color-mist);
   text-align: center;
-  padding: clamp(48px, 8vw, 96px) 24px;
+  padding: clamp(40px, 5vw, 52px) 24px;
 }
 
 .seri-detay-header .geri-butonu {
   position: absolute;
-  top: clamp(20px, 4vw, 36px);
+  top: clamp(14px, 3vw, 18px);
   left: clamp(20px, 4vw, 40px);
   color: var(--color-mist);
 }
 
 .seri-detay-header h1 {
   margin: 0;
-  font-size: clamp(2rem, 5vw, 3.2rem);
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--color-mist);
@@ -449,14 +567,17 @@ main {
 }
 
 .eserler-grid {
-  max-width: 1080px;
+  max-width: 1120px;
   margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
   justify-content: center;
-  grid-template-columns: repeat(auto-fit, minmax(230px, 260px));
   gap: 28px;
 }
 
 .eser-kart {
+  flex: 0 0 250px;
+  max-width: 100%;
   padding: 0;
   border: 1px solid rgba(26, 42, 68, 0.1);
   border-radius: 6px;
@@ -602,6 +723,147 @@ main {
     margin-left: auto;
     margin-right: auto;
   }
+}
+
+/* İletişim sayfası */
+
+.page-iletisim {
+  flex: 1;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  background: linear-gradient(180deg, #ffffff 0%, var(--color-mist) 100%);
+  border-top: 3px solid var(--color-navy-darkest);
+  padding: clamp(48px, 7vw, 88px) 24px;
+}
+
+.iletisim-ic {
+  width: 100%;
+  max-width: 620px;
+  background: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 18px 46px rgba(13, 19, 33, 0.16);
+}
+
+.iletisim-serit {
+  background: var(--color-navy-darkest);
+  color: var(--color-mist);
+  text-align: center;
+  padding: clamp(32px, 5vw, 48px) 24px;
+}
+
+.iletisim-serit h1 {
+  margin: 0;
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-mist);
+}
+
+.iletisim-isim {
+  margin: 12px 0 0;
+  font-family: var(--font-heading);
+  font-size: clamp(1rem, 2vw, 1.2rem);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(217, 222, 228, 0.75);
+}
+
+.iletisim-govde {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: clamp(24px, 4vw, 40px);
+}
+
+.iletisim-satir {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px 18px;
+  border: 1px solid rgba(26, 42, 68, 0.12);
+  border-radius: 6px;
+  text-decoration: none;
+  color: var(--color-navy);
+  transition: border-color 0.3s ease, background 0.3s ease;
+}
+
+.iletisim-satir:hover {
+  border-color: var(--color-navy);
+  background: rgba(26, 42, 68, 0.04);
+}
+
+.iletisim-ikon {
+  flex: 0 0 44px;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: var(--color-navy-darkest);
+  color: var(--color-mist);
+}
+
+.iletisim-satir-metin {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.iletisim-etiket {
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-slate);
+}
+
+.iletisim-deger {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  color: var(--color-navy);
+  word-break: break-word;
+}
+
+.iletisim-qr {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  margin-top: 8px;
+  padding-top: 28px;
+  border-top: 1px solid rgba(26, 42, 68, 0.12);
+}
+
+.iletisim-qr-cerceve {
+  padding: 12px;
+  background: #fff;
+  border: 1px solid rgba(26, 42, 68, 0.15);
+  border-radius: 8px;
+  box-shadow: 0 8px 24px rgba(13, 19, 33, 0.1);
+}
+
+.iletisim-qr-cerceve img {
+  display: block;
+  width: 180px;
+  height: 180px;
+  max-width: 100%;
+  object-fit: contain;
+}
+
+.iletisim-qr-etiket {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 0.9rem;
+  letter-spacing: 0.06em;
+  color: var(--color-navy);
 }
 
 /* Kartlar */
@@ -940,4 +1202,22 @@ main {
   .eser-modal-bilgi {
     flex: none;
   }
+}
+
+/* Sergi modal (yalnızca galeri) */
+
+.sergi-modal {
+  position: relative;
+  display: flex;
+  width: 100%;
+  max-width: 960px;
+  max-height: 90vh;
+  overflow: hidden;
+  border-radius: 8px;
+  background: var(--color-navy-darkest);
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5);
+}
+
+.sergi-modal .eser-modal-galeri {
+  flex: 1;
 }

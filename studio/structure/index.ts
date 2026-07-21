@@ -2,9 +2,10 @@ import type {StructureResolver} from 'sanity/structure'
 import {orderableDocumentListDeskItem} from '@sanity/orderable-document-list'
 import {StackIcon} from '@sanity/icons/Stack'
 import {ImagesIcon} from '@sanity/icons/Images'
+import {CalendarIcon} from '@sanity/icons/Calendar'
 import {CogIcon} from '@sanity/icons/Cog'
 
-const ORDERABLE_TYPES = ['seri', 'eser']
+const ORDERABLE_TYPES = ['seri', 'eser', 'sergi']
 const SINGLETON_TYPES = ['siteAyarlari']
 
 export const structure: StructureResolver = (S, context) =>
@@ -34,6 +35,13 @@ export const structure: StructureResolver = (S, context) =>
         type: 'eser',
         title: 'Eserler',
         icon: ImagesIcon,
+        S,
+        context,
+      }),
+      orderableDocumentListDeskItem({
+        type: 'sergi',
+        title: 'Sergiler',
+        icon: CalendarIcon,
         S,
         context,
       }),
