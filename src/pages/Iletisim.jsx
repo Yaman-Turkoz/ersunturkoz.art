@@ -1,6 +1,7 @@
 import { useTranslation } from 'react-i18next'
 import { motion } from 'motion/react'
 import { Mail, MessageCircle } from 'lucide-react'
+import GeriButonu from '../components/GeriButonu'
 import whatsappQr from '../assets/whatsapp-qr.png'
 
 const INSTAGRAM_URL = 'https://instagram.com/ersunturkoz_art'
@@ -42,6 +43,7 @@ function Iletisim() {
 
   return (
     <div className="page-iletisim">
+      <GeriButonu />
       <motion.div className="iletisim-ic" variants={kap} initial="hidden" animate="visible">
         <motion.div className="iletisim-serit" variants={oge}>
           <h1>{t('iletisim.title')}</h1>
