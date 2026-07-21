@@ -6,6 +6,9 @@ import { client, urlFor } from '../lib/sanity'
 import { SERILER_ANASAYFA_QUERY, SERGILER_QUERY, SITE_AYARLARI_QUERY } from '../lib/queries'
 import SergiModal from '../components/SergiModal'
 import logoFull from '../assets/logo/logo-full.png'
+import logoMobile from '../assets/logo/logo-mobile.png'
+
+const MOBIL_SORGU = '(max-width: 768px)'
 
 const sectionReveal = {
   initial: { opacity: 0, y: 24 },
@@ -22,7 +25,17 @@ function Anasayfa() {
   const [siteAyarlari, setSiteAyarlari] = useState(null)
   const [veriHazir, setVeriHazir] = useState(false)
   const [seciliSergi, setSeciliSergi] = useState(null)
+  const [mobil, setMobil] = useState(
+    () => typeof window !== 'undefined' && window.matchMedia(MOBIL_SORGU).matches,
+  )
   const bekleyenKaydirmaRef = useRef(null)
+
+  useEffect(() => {
+    const mq = window.matchMedia(MOBIL_SORGU)
+    const degisti = (e) => setMobil(e.matches)
+    mq.addEventListener('change', degisti)
+    return () => mq.removeEventListener('change', degisti)
+  }, [])
 
   useEffect(() => {
     let iptal = false
@@ -81,20 +94,31 @@ function Anasayfa() {
             src={urlFor(siteAyarlari.heroEserGorseli).width(1200).url()}
             alt=""
             className="hero-eser-gorseli"
-            initial={{ opacity: 0, x: -50 }}
-            animate={{ opacity: 1, x: 0 }}
+            initial={mobil ? { opacity: 0, y: 12 } : { opacity: 0, x: -50 }}
+            animate={mobil ? { opacity: 1, y: 0 } : { opacity: 1, x: 0 }}
             transition={{ duration: 0.9, ease: 'easeOut' }}
           />
         )}
 
-        <motion.img
-          src={logoFull}
-          alt="Ersun Türköz"
-          className="hero-logo"
-          initial={{ opacity: 0, x: 50 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.9, ease: 'easeOut' }}
-        />
+        {mobil ? (
+          <motion.img
+            src={logoMobile}
+            alt="Ersun Türköz"
+            className="hero-logo-mobil"
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: 'easeOut' }}
+          />
+        ) : (
+          <motion.img
+            src={logoFull}
+            alt="Ersun Türköz"
+            className="hero-logo"
+            initial={{ opacity: 0, x: 50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.9, ease: 'easeOut' }}
+          />
+        )}
       </section>
 
       <motion.section className="tanitim" id="sanatci-bolum" {...sectionReveal}>
