@@ -279,8 +279,8 @@ main {
   .hero {
     flex-direction: column;
     align-items: center;
-
-
+    max-height: 80svh;
+    max-height: 80vh;
     padding: 0px;
   }
 
