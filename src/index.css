@@ -206,13 +206,13 @@ main {
   }
 
   .hero-eser-gorseli {
-    height: 65%;
-    max-width: 85%;
+    height: 100%;
+    max-width: 100%;
     opacity: 0.5;
   }
 
   .hero-logo {
-    max-width: 340px;
+    max-width: 400px;
   }
 }
 
@@ -1191,6 +1191,125 @@ main {
 
 .eser-modal-ilgileniyorum:hover {
   background: var(--color-navy-darkest);
+}
+
+.eser-modal-ilgileniyorum:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+
+/* İlgi formu (eser modal içinde) */
+
+.ilgi-form-panel,
+.ilgi-form-sonuc {
+  display: flex;
+  flex-direction: column;
+}
+
+.ilgi-form-geri {
+  align-self: flex-start;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 18px;
+  padding: 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: var(--font-body);
+  font-size: 0.74rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-slate);
+  transition: color 0.25s ease;
+}
+
+.ilgi-form-geri:hover {
+  color: var(--color-navy);
+}
+
+.ilgi-form-baslik {
+  margin: 0;
+  font-size: clamp(1.3rem, 2.5vw, 1.7rem);
+  letter-spacing: 0.04em;
+  color: var(--color-navy);
+}
+
+.ilgi-form-eser {
+  margin: 6px 0 24px;
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-slate);
+}
+
+.ilgi-form-panel form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.ilgi-alan {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.ilgi-alan label {
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-slate);
+}
+
+.ilgi-alan input {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  color: var(--color-navy);
+  padding: 10px 12px;
+  border: 1px solid rgba(26, 42, 68, 0.2);
+  border-radius: 5px;
+  background: #fff;
+  transition: border-color 0.25s ease;
+}
+
+.ilgi-alan input:focus {
+  outline: none;
+  border-color: var(--color-navy);
+}
+
+.ilgi-alan input[aria-invalid='true'] {
+  border-color: #9e3b34;
+}
+
+.ilgi-hata {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  color: #9e3b34;
+}
+
+.ilgi-form-hata-mesaj {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  line-height: 1.6;
+  color: #9e3b34;
+}
+
+.ilgi-form-panel form .eser-modal-ilgileniyorum {
+  margin-top: 8px;
+}
+
+.ilgi-form-basarili {
+  margin: 0 0 20px;
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--color-navy);
 }
 
 @media (max-width: 760px) {

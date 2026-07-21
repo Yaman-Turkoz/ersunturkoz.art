@@ -35,6 +35,19 @@
     "sonrakiGorsel": "Sonraki görsel",
     "ilgileniyorum": "Bu eser ile ilgileniyorum"
   },
+  "ilgiForm": {
+    "baslik": "Bu eser ile ilgileniyorum",
+    "adSoyad": "Ad Soyad",
+    "eposta": "E-posta",
+    "telefon": "Telefon Numarası",
+    "gonder": "Gönder",
+    "gonderiliyor": "Gönderiliyor...",
+    "geri": "Geri",
+    "zorunlu": "Bu alan zorunludur",
+    "gecersizEposta": "Geçerli bir e-posta adresi girin",
+    "basariliMesaj": "Mesajınız iletildi, en kısa sürede dönüş yapılacaktır.",
+    "hataMesaj": "Bir sorun oluştu, lütfen tekrar deneyin veya iletişim sayfasından ulaşın."
+  },
   "iletisim": {
     "title": "İletişim",
     "isim": "Ersun Türköz",

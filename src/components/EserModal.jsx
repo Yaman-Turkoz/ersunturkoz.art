@@ -1,10 +1,12 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { motion } from 'motion/react'
 import Galeri from './Galeri'
+import IlgiFormu from './IlgiFormu'
 
 function EserModal({ eser, onClose }) {
   const { t } = useTranslation()
+  const [formAcik, setFormAcik] = useState(false)
 
   useEffect(() => {
     function onKeyDown(e) {
@@ -47,17 +49,23 @@ function EserModal({ eser, onClose }) {
         <Galeri gorseller={eser.gorseller || []} />
 
         <div className="eser-modal-bilgi">
-          {eser.baslik && <h2>{eser.baslik}</h2>}
-          {gosterilecekAltyazi && <p className="eser-modal-altyazi">{gosterilecekAltyazi}</p>}
-          {eser.aciklama && <p className="eser-modal-aciklama">{eser.aciklama}</p>}
+          {formAcik ? (
+            <IlgiFormu eserBasligi={eser.baslik} onGeri={() => setFormAcik(false)} />
+          ) : (
+            <>
+              {eser.baslik && <h2>{eser.baslik}</h2>}
+              {gosterilecekAltyazi && <p className="eser-modal-altyazi">{gosterilecekAltyazi}</p>}
+              {eser.aciklama && <p className="eser-modal-aciklama">{eser.aciklama}</p>}
 
-          <button
-            type="button"
-            className="eser-modal-ilgileniyorum"
-            onClick={() => console.log('ilgileniyorum:', eser._id)}
-          >
-            {t('eserModal.ilgileniyorum')}
-          </button>
+              <button
+                type="button"
+                className="eser-modal-ilgileniyorum"
+                onClick={() => setFormAcik(true)}
+              >
+                {t('eserModal.ilgileniyorum')}
+              </button>
+            </>
+          )}
         </div>
       </motion.div>
     </motion.div>
