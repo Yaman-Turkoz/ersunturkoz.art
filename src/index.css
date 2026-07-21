@@ -139,6 +139,83 @@ main {
   border-color: var(--color-mist);
 }
 
+/* Mobil menü (hamburger) */
+
+.hamburger {
+  display: none;
+  padding: 4px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--color-mist);
+}
+
+.hamburger svg {
+  display: block;
+}
+
+.mobil-menu-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  background: rgba(13, 19, 33, 0.55);
+}
+
+.mobil-menu {
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 210;
+  height: 100svh;
+  width: min(78vw, 320px);
+  display: flex;
+  flex-direction: column;
+  padding: 20px 24px 32px;
+  background: var(--color-navy-darkest);
+  color: var(--color-mist);
+  box-shadow: -12px 0 44px rgba(0, 0, 0, 0.45);
+}
+
+.mobil-menu-kapat {
+  align-self: flex-end;
+  padding: 4px 8px;
+  background: none;
+  border: none;
+  color: var(--color-mist);
+  font-size: 1.8rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.mobil-menu-liste {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  margin-top: 20px;
+}
+
+.mobil-menu-liste a {
+  font-family: var(--font-heading);
+  font-size: 1.1rem;
+  letter-spacing: 0.1em;
+  text-decoration: none;
+  color: var(--color-mist);
+}
+
+.mobil-lang {
+  margin-top: 12px;
+}
+
+@media (max-width: 768px) {
+  .site-header-sag {
+    display: none;
+  }
+
+  .hamburger {
+    display: inline-flex;
+  }
+}
+
 /* Footer */
 
 .site-footer {
@@ -1147,6 +1224,11 @@ main {
   flex-direction: column;
   padding: clamp(28px, 4vw, 44px) clamp(24px, 3vw, 36px);
   overflow-y: auto;
+}
+
+.eser-modal-bilgi-icerik {
+  display: flex;
+  flex-direction: column;
 }
 
 .eser-modal-bilgi h2 {

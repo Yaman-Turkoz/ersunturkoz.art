@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
-import { motion } from 'motion/react'
+import { AnimatePresence, motion } from 'motion/react'
 import Galeri from './Galeri'
 import IlgiFormu from './IlgiFormu'
 
@@ -49,23 +49,38 @@ function EserModal({ eser, onClose }) {
         <Galeri gorseller={eser.gorseller || []} />
 
         <div className="eser-modal-bilgi">
-          {formAcik ? (
-            <IlgiFormu eserBasligi={eser.baslik} onGeri={() => setFormAcik(false)} />
-          ) : (
-            <>
-              {eser.baslik && <h2>{eser.baslik}</h2>}
-              {gosterilecekAltyazi && <p className="eser-modal-altyazi">{gosterilecekAltyazi}</p>}
-              {eser.aciklama && <p className="eser-modal-aciklama">{eser.aciklama}</p>}
-
-              <button
-                type="button"
-                className="eser-modal-ilgileniyorum"
-                onClick={() => setFormAcik(true)}
+          <AnimatePresence mode="wait" initial={false}>
+            {formAcik ? (
+              <IlgiFormu
+                key="form"
+                eserBasligi={eser.baslik}
+                onGeri={() => setFormAcik(false)}
+              />
+            ) : (
+              <motion.div
+                key="bilgi"
+                className="eser-modal-bilgi-icerik"
+                initial={{ opacity: 0, y: 8 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -8 }}
+                transition={{ duration: 0.25, ease: 'easeOut' }}
               >
-                {t('eserModal.ilgileniyorum')}
-              </button>
-            </>
-          )}
+                {eser.baslik && <h2>{eser.baslik}</h2>}
+                {gosterilecekAltyazi && (
+                  <p className="eser-modal-altyazi">{gosterilecekAltyazi}</p>
+                )}
+                {eser.aciklama && <p className="eser-modal-aciklama">{eser.aciklama}</p>}
+
+                <button
+                  type="button"
+                  className="eser-modal-ilgileniyorum"
+                  onClick={() => setFormAcik(true)}
+                >
+                  {t('eserModal.ilgileniyorum')}
+                </button>
+              </motion.div>
+            )}
+          </AnimatePresence>
         </div>
       </motion.div>
     </motion.div>
