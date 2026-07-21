@@ -368,7 +368,7 @@ main {
 .sergiler {
   background: var(--color-mist);
   color: var(--color-navy);
-  padding: clamp(56px, 8vw, 96px) 24px;
+  padding: clamp(36px, 5vw, 56px) 24px clamp(56px, 8vw, 88px);
 }
 
 .sergiler-ic {
