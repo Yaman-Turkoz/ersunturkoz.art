@@ -81,10 +81,7 @@ function Iletisim() {
             <div className="iletisim-qr-cerceve">
               <img src={whatsappQr} alt="WhatsApp QR" />
             </div>
-            <span className="iletisim-qr-etiket">
-              <MessageCircle size={18} strokeWidth={2} />
-              {t('iletisim.whatsapp')}
-            </span>
+
           </motion.div>
         </motion.div>
       </motion.div>
