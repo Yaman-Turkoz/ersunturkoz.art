@@ -4,7 +4,9 @@ import { useTranslation } from 'react-i18next'
 import { AnimatePresence, motion } from 'motion/react'
 import { client, urlFor } from '../lib/sanity'
 import { SERILER_ANASAYFA_QUERY, SERGILER_QUERY, SITE_AYARLARI_QUERY } from '../lib/queries'
+import { getLocalized } from '../lib/getLocalized'
 import SergiModal from '../components/SergiModal'
+import DilGecis from '../components/DilGecis'
 import logoFull from '../assets/logo/logo-full.png'
 import logoMobile from '../assets/logo/logo-mobile.png'
 
@@ -18,7 +20,8 @@ const sectionReveal = {
 }
 
 function Anasayfa() {
-  const { t } = useTranslation()
+  const { t, i18n } = useTranslation()
+  const dil = i18n.resolvedLanguage
   const location = useLocation()
   const [seriler, setSeriler] = useState([])
   const [sergiler, setSergiler] = useState([])
@@ -131,19 +134,21 @@ function Anasayfa() {
               />
             </div>
           )}
-          <div className="tanitim-metin">
+          <DilGecis className="tanitim-metin">
             <h2>{t('home.tanitimBaslik')}</h2>
             <p>{t('home.tanitimMetin')}</p>
             <Link to="/sanatci" className="tanitim-link">
               {t('home.sanatciKesfet')}
             </Link>
-          </div>
+          </DilGecis>
         </div>
       </motion.section>
 
       <motion.section className="seriler" id="koleksiyonlar" {...sectionReveal}>
         <div className="seriler-ic">
-          <h2 className="bolum-baslik">{t('home.koleksiyonlar')}</h2>
+          <DilGecis as="h2" className="bolum-baslik">
+            {t('home.koleksiyonlar')}
+          </DilGecis>
           <div className="kart-grid">
             {seriler.map((seri) => (
               <Link
@@ -157,10 +162,10 @@ function Anasayfa() {
                     <img src={urlFor(seri.kapakGorseli).width(500).height(667).fit('crop').url()} alt="" />
                   )}
                 </div>
-                <div className="kart-bilgi">
-                  <h2>{seri.baslik}</h2>
+                <DilGecis className="kart-bilgi">
+                  <h2>{getLocalized(seri.baslik, dil)}</h2>
                   <span className="kart-altbilgi">{t('home.seriEtiket')}</span>
-                </div>
+                </DilGecis>
               </Link>
             ))}
           </div>
@@ -170,7 +175,9 @@ function Anasayfa() {
       {sergiler.length > 0 && (
         <motion.section className="sergiler" id="sergiler" {...sectionReveal}>
           <div className="sergiler-ic">
-            <h2 className="bolum-baslik">{t('home.gecmisSergiler')}</h2>
+            <DilGecis as="h2" className="bolum-baslik">
+              {t('home.gecmisSergiler')}
+            </DilGecis>
             <div className="sergi-liste">
               {sergiler.map((sergi) => (
                 <div key={sergi._id} className="sergi-satir">

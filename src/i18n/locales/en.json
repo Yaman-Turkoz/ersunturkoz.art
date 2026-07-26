@@ -1,1 +1,62 @@
-{}
+{
+  "nav": {
+    "sanatci": "Artist",
+    "koleksiyonlar": "Collections",
+    "sergiler": "Exhibitions",
+    "iletisim": "Contact",
+    "menu": "Menu"
+  },
+  "genel": {
+    "geri": "Back"
+  },
+  "home": {
+    "title": "Ersun Türköz",
+    "subtitle": "Ceramic Sculpture and Painting",
+    "tanitimBaslik": "In Pursuıt of Art",
+    "tanitimMetin": "Series of ceramic sculptures and paintings that carry traces of mythology and life.",
+    "sanatciKesfet": "Dıscover the artıst",
+    "koleksiyonlar": "Collectıons",
+    "seriEtiket": "Collectıon",
+    "gecmisSergiler": "Past Exhıbıtıons",
+    "sanatciKart": "Artist",
+    "sanatciAciklama": "About the artist"
+  },
+  "sanatci": {
+    "title": "Artıst",
+    "isim": "Ersun Türköz",
+    "body": "After his engineering education, he studied painting at the Hızır Tepeev Atelier and ceramics at the Meral Öztürk Atelier.\n\nIn his paintings and ceramic sculptures, he interprets ancient stories shaped between love, life and death, and the inner world of the human being, through a contemporary sensibility.\n\nThe collection The Silence of the Trojan Horse carries the story of the past into the present through the Trojan Horse, the immortal witness of Troy."
+  },
+  "seriDetay": {
+    "bulunamadi": "This collection could not be found.",
+    "anasayfayaDon": "Back to home"
+  },
+  "eserModal": {
+    "kapat": "Close",
+    "oncekiGorsel": "Previous image",
+    "sonrakiGorsel": "Next image",
+    "ilgileniyorum": "I'm interested in this work"
+  },
+  "ilgiForm": {
+    "baslik": "I'm interested in this work",
+    "adSoyad": "Full Name",
+    "eposta": "Email",
+    "telefon": "Phone Number",
+    "gonder": "Send",
+    "gonderiliyor": "Sending...",
+    "geri": "Back",
+    "zorunlu": "This field is required",
+    "gecersizEposta": "Please enter a valid email address",
+    "basariliMesaj": "Your message has been sent. You will be contacted as soon as possible.",
+    "hataMesaj": "Something went wrong. Please try again or reach out via the contact page."
+  },
+  "iletisim": {
+    "title": "Contact",
+    "isim": "Ersun Türköz",
+    "instagram": "Instagram",
+    "eposta": "Email",
+    "whatsapp": "Reach via WhatsApp"
+  },
+  "footer": {
+    "hakSaklidir": "All rights reserved."
+  }
+}

@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { Link, useNavigate, useLocation } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { AnimatePresence, motion } from 'motion/react'
+import DilGecis from './DilGecis'
 import logoIcon from '../assets/logo/logo-icon.png'
 
 const DILLER = [
@@ -78,14 +79,14 @@ function Header() {
         </Link>
 
         <div className="site-header-sag">
-          <nav className="site-nav">
+          <DilGecis as="nav" className="site-nav">
             {BOLUM_LINKLERI.map((l) => (
               <a key={l.hedef} href={`/#${l.hedef}`} onClick={(e) => bolumeKaydir(e, l.hedef)}>
                 {t(l.anahtar)}
               </a>
             ))}
             <Link to="/iletisim">{t('nav.iletisim')}</Link>
-          </nav>
+          </DilGecis>
 
           <div className="lang-switcher">{dilButonlari}</div>
         </div>

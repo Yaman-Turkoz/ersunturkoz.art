@@ -1,1 +1,62 @@
-{}
+{
+  "nav": {
+    "sanatci": "Artista",
+    "koleksiyonlar": "Collezioni",
+    "sergiler": "Mostre",
+    "iletisim": "Contatti",
+    "menu": "Menu"
+  },
+  "genel": {
+    "geri": "Indietro"
+  },
+  "home": {
+    "title": "Ersun Türköz",
+    "subtitle": "Scultura Ceramica e Pittura",
+    "tanitimBaslik": "Sulle tracce dell'arte",
+    "tanitimMetin": "Serie di sculture in ceramica e dipinti che portano tracce della mitologia e della vita.",
+    "sanatciKesfet": "Scopri l'artista",
+    "koleksiyonlar": "Collezioni",
+    "seriEtiket": "Collezione",
+    "gecmisSergiler": "Mostre Passate",
+    "sanatciKart": "Artista",
+    "sanatciAciklama": "Sull'artista"
+  },
+  "sanatci": {
+    "title": "Artista",
+    "isim": "Ersun Türköz",
+    "body": "Dopo la formazione in ingegneria, ha studiato pittura presso l'Atelier Hızır Tepeev e ceramica presso l'Atelier Meral Öztürk.\n\nNei suoi dipinti e nelle sue sculture in ceramica interpreta, con una sensibilità contemporanea, le antiche storie che prendono forma tra amore, vita e morte, e il mondo interiore dell'essere umano.\n\nLa collezione Il Silenzio del Cavallo di Troia porta la storia del passato nel presente attraverso il Cavallo di Troia, testimone immortale di Troia."
+  },
+  "seriDetay": {
+    "bulunamadi": "Questa collezione non è stata trovata.",
+    "anasayfayaDon": "Torna alla home"
+  },
+  "eserModal": {
+    "kapat": "Chiudi",
+    "oncekiGorsel": "Immagine precedente",
+    "sonrakiGorsel": "Immagine successiva",
+    "ilgileniyorum": "Sono interessato a quest'opera"
+  },
+  "ilgiForm": {
+    "baslik": "Sono interessato a quest'opera",
+    "adSoyad": "Nome e Cognome",
+    "eposta": "Email",
+    "telefon": "Numero di Telefono",
+    "gonder": "Invia",
+    "gonderiliyor": "Invio in corso...",
+    "geri": "Indietro",
+    "zorunlu": "Questo campo è obbligatorio",
+    "gecersizEposta": "Inserisci un indirizzo email valido",
+    "basariliMesaj": "Il tuo messaggio è stato inviato. Sarai ricontattato al più presto.",
+    "hataMesaj": "Si è verificato un problema. Riprova o contattaci tramite la pagina dei contatti."
+  },
+  "iletisim": {
+    "title": "Contatti",
+    "isim": "Ersun Türköz",
+    "instagram": "Instagram",
+    "eposta": "Email",
+    "whatsapp": "Contatta via WhatsApp"
+  },
+  "footer": {
+    "hakSaklidir": "Tutti i diritti riservati."
+  }
+}

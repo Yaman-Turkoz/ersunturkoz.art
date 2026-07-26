@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
+import DilGecis from './DilGecis'
 
 function GeriButonu({ className = '' }) {
   const { t } = useTranslation()
@@ -20,7 +21,7 @@ function GeriButonu({ className = '' }) {
         <line x1="19" y1="12" x2="5" y2="12" />
         <polyline points="12 19 5 12 12 5" />
       </svg>
-      <span>{t('genel.geri')}</span>
+      <DilGecis as="span">{t('genel.geri')}</DilGecis>
     </Link>
   )
 }

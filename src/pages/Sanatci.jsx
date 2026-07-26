@@ -4,6 +4,7 @@ import { motion } from 'motion/react'
 import { client, urlFor } from '../lib/sanity'
 import { SITE_AYARLARI_QUERY } from '../lib/queries'
 import GeriButonu from '../components/GeriButonu'
+import DilGecis from '../components/DilGecis'
 
 function Sanatci() {
   const { t } = useTranslation()
@@ -39,9 +40,11 @@ function Sanatci() {
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.7, ease: 'easeOut', delay: 0.1 }}
         >
-          <span className="sanatci-kicker">{t('sanatci.title')}</span>
-          <h1>{t('sanatci.isim')}</h1>
-          <p>{t('sanatci.body')}</p>
+          <DilGecis>
+            <span className="sanatci-kicker">{t('sanatci.title')}</span>
+            <h1>{t('sanatci.isim')}</h1>
+            <p>{t('sanatci.body')}</p>
+          </DilGecis>
         </motion.div>
       </div>
     </div>

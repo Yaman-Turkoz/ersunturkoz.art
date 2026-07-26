@@ -8,7 +8,7 @@ export const SITE_AYARLARI_QUERY = `
 export const SERILER_ANASAYFA_QUERY = `
 *[_type == "seri" && anasayfadaGoster == true] | order(orderRank asc) {
   _id,
-  baslik,
+  baslik{tr, en, it},
   "slug": slug.current,
   kapakGorseli
 }
@@ -26,13 +26,13 @@ export const SERGILER_QUERY = `
 export const SERI_DETAY_QUERY = `
 *[_type == "seri" && slug.current == $slug][0]{
   _id,
-  baslik,
+  baslik{tr, en, it},
   kapakGorseli,
   "eserler": *[_type == "eser" && references(^._id)] | order(orderRank asc) {
     _id,
-    baslik,
+    baslik{tr, en, it},
+    aciklama{tr, en, it},
     gorseller,
-    aciklama,
     teknik
   }
 }

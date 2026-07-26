@@ -12,15 +12,36 @@ export const seri = defineType({
     defineField({
       name: 'baslik',
       title: 'Başlık',
-      type: 'string',
-      validation: (rule) => rule.required(),
+      type: 'object',
+      options: {columns: 1},
+      fields: [
+        defineField({
+          name: 'tr',
+          title: 'Başlık (Türkçe)',
+          type: 'string',
+          validation: (rule) => rule.required(),
+        }),
+        defineField({
+          name: 'en',
+          title: 'Başlık (English) — opsiyonel',
+          type: 'string',
+          description: 'Boş bırakırsanız bu dilde Türkçesi gösterilir.',
+        }),
+        defineField({
+          name: 'it',
+          title: 'Başlık (Italiano) — opsiyonel',
+          type: 'string',
+          description: 'Boş bırakırsanız bu dilde Türkçesi gösterilir.',
+        }),
+      ],
     }),
     defineField({
       name: 'slug',
       title: 'Slug',
       type: 'slug',
+      description: 'Türkçe başlıktan otomatik üretilir; dile göre değişmez.',
       options: {
-        source: 'baslik',
+        source: 'baslik.tr',
         maxLength: 96,
       },
       validation: (rule) => rule.required(),
@@ -43,7 +64,7 @@ export const seri = defineType({
   ],
   preview: {
     select: {
-      title: 'baslik',
+      title: 'baslik.tr',
       media: 'kapakGorseli',
     },
   },

@@ -1,4 +1,5 @@
 import { useTranslation } from 'react-i18next'
+import DilGecis from './DilGecis'
 
 function Footer() {
   const { t } = useTranslation()
@@ -6,9 +7,9 @@ function Footer() {
 
   return (
     <footer className="site-footer">
-      <p>
+      <DilGecis as="p">
         © {yil} Ersun Türköz. {t('footer.hakSaklidir')}
-      </p>
+      </DilGecis>
     </footer>
   )
 }

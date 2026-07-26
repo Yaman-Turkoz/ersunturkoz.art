@@ -1,11 +1,13 @@
 import { useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
-import { AnimatePresence, motion } from 'motion/react'
+import { AnimatePresence, motion, useReducedMotion } from 'motion/react'
+import { getLocalized } from '../lib/getLocalized'
 import Galeri from './Galeri'
 import IlgiFormu from './IlgiFormu'
 
 function EserModal({ eser, onClose }) {
-  const { t } = useTranslation()
+  const { t, i18n } = useTranslation()
+  const azalt = useReducedMotion()
   const [formAcik, setFormAcik] = useState(false)
 
   useEffect(() => {
@@ -18,6 +20,9 @@ function EserModal({ eser, onClose }) {
 
   if (!eser) return null
 
+  const dil = i18n.resolvedLanguage
+  const baslik = getLocalized(eser.baslik, dil)
+  const aciklama = getLocalized(eser.aciklama, dil)
   const gosterilecekAltyazi = eser.teknik || ''
 
   return (
@@ -53,23 +58,23 @@ function EserModal({ eser, onClose }) {
             {formAcik ? (
               <IlgiFormu
                 key="form"
-                eserBasligi={eser.baslik}
+                eserBasligi={baslik}
                 onGeri={() => setFormAcik(false)}
               />
             ) : (
               <motion.div
-                key="bilgi"
+                key={azalt ? 'bilgi' : `bilgi-${i18n.language}`}
                 className="eser-modal-bilgi-icerik"
                 initial={{ opacity: 0, y: 8 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -8 }}
                 transition={{ duration: 0.25, ease: 'easeOut' }}
               >
-                {eser.baslik && <h2>{eser.baslik}</h2>}
+                {baslik && <h2>{baslik}</h2>}
                 {gosterilecekAltyazi && (
                   <p className="eser-modal-altyazi">{gosterilecekAltyazi}</p>
                 )}
-                {eser.aciklama && <p className="eser-modal-aciklama">{eser.aciklama}</p>}
+                {aciklama && <p className="eser-modal-aciklama">{aciklama}</p>}
 
                 <button
                   type="button"

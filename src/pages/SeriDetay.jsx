@@ -4,12 +4,15 @@ import { useTranslation } from 'react-i18next'
 import { AnimatePresence } from 'motion/react'
 import { client, urlFor } from '../lib/sanity'
 import { SERI_DETAY_QUERY } from '../lib/queries'
+import { getLocalized } from '../lib/getLocalized'
 import EserModal from '../components/EserModal'
 import GeriButonu from '../components/GeriButonu'
+import DilGecis from '../components/DilGecis'
 
 function SeriDetay() {
   const { seriSlug } = useParams()
-  const { t } = useTranslation()
+  const { t, i18n } = useTranslation()
+  const dil = i18n.resolvedLanguage
   const [seri, setSeri] = useState(undefined)
   const [seciliEser, setSeciliEser] = useState(null)
 
@@ -35,7 +38,7 @@ function SeriDetay() {
     <div className="page-seri-detay">
       <header className="seri-detay-header">
         <GeriButonu />
-        <h1>{seri.baslik}</h1>
+        <DilGecis as="h1">{getLocalized(seri.baslik, dil)}</DilGecis>
       </header>
 
       <section className="seri-detay-icerik">
@@ -56,9 +59,9 @@ function SeriDetay() {
                   <img src={urlFor(eser.gorseller[0]).width(500).height(667).fit('crop').url()} alt="" />
                 )}
               </div>
-              <div className="kart-bilgi">
-                <h2>{eser.baslik}</h2>
-              </div>
+              <DilGecis className="kart-bilgi">
+                <h2>{getLocalized(eser.baslik, dil)}</h2>
+              </DilGecis>
             </div>
           ))}
         </div>
