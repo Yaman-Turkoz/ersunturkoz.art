@@ -674,6 +674,49 @@ main {
   text-align: center;
 }
 
+/* Suspense fallback — sayfa yüklenirken */
+.yukleniyor {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  min-height: 60vh;
+  padding: 40px 24px;
+}
+
+.yukleniyor-spinner {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: 2px solid rgba(26, 42, 68, 0.18);
+  border-top-color: var(--color-navy);
+  animation: yukleniyor-don 0.8s linear infinite;
+}
+
+.yukleniyor-metin {
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-slate);
+}
+
+@keyframes yukleniyor-don {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .yukleniyor-spinner {
+    animation: none;
+    /* Dönme yerine hafif nabız; rahatsız etmez */
+    opacity: 0.6;
+  }
+}
+
 /* 404 — Sayfa bulunamadı */
 .page-notfound {
   display: flex;

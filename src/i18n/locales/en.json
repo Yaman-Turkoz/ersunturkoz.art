@@ -7,7 +7,8 @@
     "menu": "Menu"
   },
   "genel": {
-    "geri": "Back"
+    "geri": "Back",
+    "yukleniyor": "Loading"
   },
   "home": {
     "title": "Ersun Türköz",
