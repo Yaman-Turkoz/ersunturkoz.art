@@ -1,8 +1,8 @@
 {
   "nav": {
-    "sanatci": "Artist",
-    "koleksiyonlar": "Collections",
-    "sergiler": "Exhibitions",
+    "sanatci": "Artıst",
+    "koleksiyonlar": "Collectıons",
+    "sergiler": "Exhıbıtıons",
     "iletisim": "Contact",
     "menu": "Menu"
   },
@@ -37,9 +37,9 @@
     "ilgileniyorum": "I'm interested in this work"
   },
   "ilgiForm": {
-    "baslik": "I'm interested in this work",
+    "baslik": "I'm ınterested ın thıs work",
     "adSoyad": "Full Name",
-    "eposta": "Email",
+    "eposta": "Emaıl",
     "telefon": "Phone Number",
     "gonder": "Send",
     "gonderiliyor": "Sending...",
@@ -53,7 +53,7 @@
     "title": "Contact",
     "isim": "Ersun Türköz",
     "instagram": "Instagram",
-    "eposta": "Email",
+    "eposta": "Emaıl",
     "whatsapp": "Reach via WhatsApp"
   },
   "footer": {
