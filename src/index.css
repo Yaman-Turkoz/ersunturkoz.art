@@ -566,6 +566,33 @@ main {
   max-width: 520px;
   line-height: 1.75;
   color: var(--color-slate);
+  white-space: pre-line;
+}
+
+/* Troya Atı'nın Sessizliği — özel şiir */
+
+.troya-siir {
+  --siir-birim: 2rem;
+  text-align: left;
+}
+
+.troya-siir-dize {
+  font-family: var(--font-body);
+  font-size: clamp(0.85rem, 1.4vw, 1rem);
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  line-height: 1.9;
+  color: var(--color-navy);
+}
+
+.troya-siir-bosluk {
+  height: 1.3em;
+}
+
+@media (max-width: 760px) {
+  .troya-siir {
+    --siir-birim: 0.9rem;
+  }
 }
 
 @media (prefers-reduced-motion: no-preference) {

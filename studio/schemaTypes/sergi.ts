@@ -16,6 +16,18 @@ export const sergi = defineType({
       validation: (rule) => rule.required(),
     }),
     defineField({
+      name: 'slug',
+      title: 'Slug (kimlik)',
+      type: 'slug',
+      description:
+        'Opsiyonel. Yalnızca özel açıklama gösterilecek sergiler için gerekir. ' +
+        'Troya Atı sergisi için değeri "troya-atinin-sessizligi" olmalı.',
+      options: {
+        source: 'baslik',
+        maxLength: 96,
+      },
+    }),
+    defineField({
       name: 'aciklama',
       title: 'Açıklama',
       type: 'text',

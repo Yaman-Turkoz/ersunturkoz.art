@@ -8,6 +8,11 @@ import { SERILER_ANASAYFA_QUERY, SERGILER_QUERY, SITE_AYARLARI_QUERY } from '../
 import { getLocalized } from '../lib/getLocalized'
 import SergiModal from '../components/SergiModal'
 import DilGecis from '../components/DilGecis'
+import TroyaSiir from '../components/TroyaSiir'
+
+// "Troya Atı'nın Sessizliği" sergisini tanımak için sabit slug.
+// Studio'da bu serginin Slug alanı tam olarak bu değer olmalı.
+const TROYA_SERGI_SLUG = 'troya-atinin-sessizligi'
 import logoFull from '../assets/logo/logo-full.png'
 import logoMobile from '../assets/logo/logo-mobile.png'
 
@@ -223,7 +228,11 @@ function Anasayfa() {
 
                   <div className="sergi-metin">
                     <h3>{sergi.baslik}</h3>
-                    {sergi.aciklama && <p>{sergi.aciklama}</p>}
+                    {sergi.slug === TROYA_SERGI_SLUG ? (
+                      <TroyaSiir />
+                    ) : (
+                      sergi.aciklama && <p>{sergi.aciklama}</p>
+                    )}
                   </div>
                 </motion.div>
               ))}

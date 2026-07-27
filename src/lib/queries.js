@@ -18,6 +18,7 @@ export const SERGILER_QUERY = `
 *[_type == "sergi"] | order(orderRank asc) {
   _id,
   baslik,
+  "slug": slug.current,
   aciklama,
   gorseller
 }
