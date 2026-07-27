@@ -7,6 +7,7 @@ import { client, urlFor } from '../lib/sanity'
 import { SERILER_ANASAYFA_QUERY, SERGILER_QUERY, SITE_AYARLARI_QUERY } from '../lib/queries'
 import { getLocalized } from '../lib/getLocalized'
 import SergiModal from '../components/SergiModal'
+import Seo from '../components/Seo'
 import DilGecis from '../components/DilGecis'
 import TroyaSiir from '../components/TroyaSiir'
 
@@ -97,6 +98,7 @@ function Anasayfa() {
 
   return (
     <div className="page-anasayfa">
+      <Seo title={t('seo.anasayfa')} />
       <section className="hero">
         {siteAyarlari?.heroEserGorseli && (
           <motion.img

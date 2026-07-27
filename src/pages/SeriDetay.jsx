@@ -7,6 +7,7 @@ import { SERI_DETAY_QUERY } from '../lib/queries'
 import { getLocalized } from '../lib/getLocalized'
 import EserModal from '../components/EserModal'
 import GeriButonu from '../components/GeriButonu'
+import Seo from '../components/Seo'
 import DilGecis from '../components/DilGecis'
 
 function SeriDetay() {
@@ -36,6 +37,7 @@ function SeriDetay() {
 
   return (
     <div className="page-seri-detay">
+      <Seo title={`${getLocalized(seri.baslik, dil)} — ${t('seo.suffix')}`} />
       <header className="seri-detay-header">
         <GeriButonu />
         <DilGecis as="h1">{getLocalized(seri.baslik, dil)}</DilGecis>

@@ -4,6 +4,7 @@ import { motion } from 'motion/react'
 import { client, urlFor } from '../lib/sanity'
 import { SITE_AYARLARI_QUERY } from '../lib/queries'
 import GeriButonu from '../components/GeriButonu'
+import Seo from '../components/Seo'
 import DilGecis from '../components/DilGecis'
 
 function Sanatci() {
@@ -16,6 +17,7 @@ function Sanatci() {
 
   return (
     <div className="page-sanatci">
+      <Seo title={t('seo.sanatci')} />
       <GeriButonu />
       <div className="sanatci-ic">
         <motion.div

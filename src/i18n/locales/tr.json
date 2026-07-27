@@ -31,7 +31,7 @@
     "anasayfayaDon": "Anasayfaya dön"
   },
   "sergiler": {
-  "gorselleriGor": "Görselleri görüntülemek için tıklayın"
+    "gorselleriGor": "Görselleri görüntülemek için tıklayın"
   },
   "eserModal": {
     "kapat": "Kapat",
@@ -40,10 +40,10 @@
     "ilgileniyorum": "Bu eser ile ilgileniyorum"
   },
   "eserDurumu": {
-  "available": "Koleksiyona Açık",
-  "private": "Özel Koleksiyonda",
-  "museum": "Müze Koleksiyonunda",
-  "artist": "Sanatçı Koleksiyonunda"
+    "available": "Koleksiyona Açık",
+    "private": "Özel Koleksiyonda",
+    "museum": "Müze Koleksiyonunda",
+    "artist": "Sanatçı Koleksiyonunda"
   },
   "ilgiForm": {
     "baslik": "Bu eser ile ilgileniyorum",
@@ -67,5 +67,11 @@
   },
   "footer": {
     "hakSaklidir": "Tüm hakları saklıdır."
+  },
+  "seo": {
+    "anasayfa": "Ersun Türköz — Çağdaş Seramik Heykel ve Resim",
+    "sanatci": "Sanatçı — Ersun Türköz",
+    "iletisim": "İletişim — Ersun Türköz",
+    "suffix": "Ersun Türköz"
   }
 }

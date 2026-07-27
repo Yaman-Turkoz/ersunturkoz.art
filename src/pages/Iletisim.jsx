@@ -2,6 +2,7 @@ import { useTranslation } from 'react-i18next'
 import { motion } from 'motion/react'
 import { Mail } from 'lucide-react'
 import GeriButonu from '../components/GeriButonu'
+import Seo from '../components/Seo'
 import DilGecis from '../components/DilGecis'
 import whatsappQr from '../assets/whatsapp-qr.png'
 
@@ -44,6 +45,7 @@ function Iletisim() {
 
   return (
     <div className="page-iletisim">
+      <Seo title={t('seo.iletisim')} />
       <GeriButonu />
       <motion.div className="iletisim-ic" variants={kap} initial="hidden" animate="visible">
         <motion.div className="iletisim-serit" variants={oge}>
