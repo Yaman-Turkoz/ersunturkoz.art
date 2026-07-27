@@ -217,7 +217,7 @@ function Anasayfa() {
                     </button>
                     <span className="sergi-gorsel-ipucu">
                       <Images size={14} strokeWidth={2} aria-hidden="true" />
-                      {t('sergiler.gorselleriGor')}
+                      <DilGecis as="span">{t('sergiler.gorselleriGor')}</DilGecis>
                     </span>
                   </div>
 
