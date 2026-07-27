@@ -25,6 +25,10 @@ function EserModal({ eser, onClose }) {
   const aciklama = getLocalized(eser.aciklama, dil)
   const gosterilecekAltyazi = eser.teknik || ''
 
+  // Durum yoksa/boşsa "available" (satışta) kabul et — mevcut eserler sorun çıkarmasın.
+  const durum = eser.durum || 'available'
+  const satista = durum === 'available' || durum === 'artist'
+
   return (
     <motion.div
       className="eser-modal-overlay"
@@ -76,10 +80,14 @@ function EserModal({ eser, onClose }) {
                 )}
                 {aciklama && <p className="eser-modal-aciklama">{aciklama}</p>}
 
+                <p className="eser-modal-durum">{t(`eserDurumu.${durum}`)}</p>
+
                 <button
                   type="button"
                   className="eser-modal-ilgileniyorum"
-                  onClick={() => setFormAcik(true)}
+                  onClick={() => satista && setFormAcik(true)}
+                  disabled={!satista}
+                  aria-disabled={!satista}
                 >
                   {t('eserModal.ilgileniyorum')}
                 </button>

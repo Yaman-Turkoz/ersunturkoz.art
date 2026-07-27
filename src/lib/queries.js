@@ -34,7 +34,8 @@ export const SERI_DETAY_QUERY = `
     baslik{tr, en, it},
     aciklama{tr, en, it},
     gorseller,
-    teknik
+    teknik,
+    durum
   }
 }
 `

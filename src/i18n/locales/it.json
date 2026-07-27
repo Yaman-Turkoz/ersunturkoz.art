@@ -37,7 +37,13 @@
     "kapat": "Chiudi",
     "oncekiGorsel": "Immagine precedente",
     "sonrakiGorsel": "Immagine successiva",
-    "ilgileniyorum": "Sono interessato a quest'opera"
+    "ilgileniyorum": "Sono ınteressato a quest'opera"
+  },
+  "eserDurumu": {
+  "available": "Dısponıbıle per la Collezıone",
+  "private": "In Collezıone Prıvata",
+  "museum": "In una Collezıone Museale",
+  "artist": "Nella Collezıone dell'Artısta"
   },
   "ilgiForm": {
     "baslik": "Sono ınteressato a quest'opera",

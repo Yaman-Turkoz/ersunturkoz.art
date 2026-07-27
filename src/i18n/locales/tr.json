@@ -39,6 +39,12 @@
     "sonrakiGorsel": "Sonraki görsel",
     "ilgileniyorum": "Bu eser ile ilgileniyorum"
   },
+  "eserDurumu": {
+  "available": "Koleksiyona Açık",
+  "private": "Özel Koleksiyonda",
+  "museum": "Müze Koleksiyonunda",
+  "artist": "Sanatçı Koleksiyonunda"
+  },
   "ilgiForm": {
     "baslik": "Bu eser ile ilgileniyorum",
     "adSoyad": "Ad Soyad",

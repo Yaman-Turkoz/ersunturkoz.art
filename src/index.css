@@ -1322,8 +1322,22 @@ main {
   white-space: pre-line;
 }
 
+.eser-modal-durum {
+  align-self: flex-start;
+  margin: 24px 0 0;
+  padding: 5px 12px;
+  border: 1px solid rgba(26, 42, 68, 0.2);
+  border-radius: 20px;
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-slate);
+}
+
 .eser-modal-ilgileniyorum {
-  margin-top: 32px;
+  margin-top: 20px;
   align-self: flex-start;
   padding: 13px 28px;
   font-family: var(--font-body);
@@ -1339,13 +1353,14 @@ main {
   transition: background 0.3s ease;
 }
 
-.eser-modal-ilgileniyorum:hover {
+.eser-modal-ilgileniyorum:hover:not(:disabled) {
   background: var(--color-navy-darkest);
 }
 
 .eser-modal-ilgileniyorum:disabled {
-  opacity: 0.6;
-  cursor: default;
+  background: var(--color-slate);
+  opacity: 0.45;
+  cursor: not-allowed;
 }
 
 /* İlgi formu (eser modal içinde) */

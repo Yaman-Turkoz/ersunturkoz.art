@@ -80,6 +80,22 @@ export const eser = defineType({
       type: 'string',
     }),
     defineField({
+      name: 'durum',
+      title: 'Durum (satış)',
+      type: 'string',
+      initialValue: 'available',
+      options: {
+        layout: 'dropdown',
+        list: [
+          {value: 'available', title: 'Koleksiyona Açık (satışta)'},
+          {value: 'artist', title: 'Sanatçı Koleksiyonunda (satışta)'},
+          {value: 'private', title: 'Özel Koleksiyonda (satışta değil)'},
+          {value: 'museum', title: 'Müze Koleksiyonunda (satışta değil)'},
+        ],
+      },
+      validation: (rule) => rule.required(),
+    }),
+    defineField({
       name: 'seri',
       title: 'Seri',
       type: 'reference',

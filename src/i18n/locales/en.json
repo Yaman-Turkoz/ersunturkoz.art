@@ -37,7 +37,13 @@
     "kapat": "Close",
     "oncekiGorsel": "Previous image",
     "sonrakiGorsel": "Next image",
-    "ilgileniyorum": "I'm interested in this work"
+    "ilgileniyorum": "I'm ınterested ın thıs work"
+  },
+  "eserDurumu": {
+  "available": "Avaılable for Collectıon",
+  "private": "In a Private Collectıon",
+  "museum": "In a Museum Collectıon",
+  "artist": "In the Artıst's Collectıon"
   },
   "ilgiForm": {
     "baslik": "I'm ınterested ın thıs work",
