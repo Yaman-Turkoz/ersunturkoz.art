@@ -151,13 +151,13 @@ function Header() {
                 {BOLUM_LINKLERI.map((l) => (
                   <motion.div key={l.hedef} variants={menuOge}>
                     <a href={`/#${l.hedef}`} onClick={(e) => bolumeKaydirMobil(e, l.hedef)}>
-                      {t(l.anahtar)}
+                      <DilGecis as="span">{t(l.anahtar)}</DilGecis>
                     </a>
                   </motion.div>
                 ))}
                 <motion.div variants={menuOge}>
                   <Link to="/iletisim" onClick={() => setMenuAcik(false)}>
-                    {t('nav.iletisim')}
+                    <DilGecis as="span">{t('nav.iletisim')}</DilGecis>
                   </Link>
                 </motion.div>
 
