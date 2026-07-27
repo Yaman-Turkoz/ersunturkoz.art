@@ -1,9 +1,9 @@
 {
   "nav": {
-    "sanatci": "Artista",
-    "koleksiyonlar": "Collezioni",
+    "sanatci": "Artısta",
+    "koleksiyonlar": "Collezionı",
     "sergiler": "Mostre",
-    "iletisim": "Contatti",
+    "iletisim": "Contattı",
     "menu": "Menu"
   },
   "genel": {
@@ -14,15 +14,15 @@
     "subtitle": "Scultura Ceramica e Pittura",
     "tanitimBaslik": "Sulle tracce dell'arte",
     "tanitimMetin": "Serie di sculture in ceramica e dipinti che portano tracce della mitologia e della vita.",
-    "sanatciKesfet": "Scopri l'artista",
-    "koleksiyonlar": "Collezioni",
-    "seriEtiket": "Collezione",
+    "sanatciKesfet": "Scoprı l'artısta",
+    "koleksiyonlar": "Collezıonı",
+    "seriEtiket": "Collezıone",
     "gecmisSergiler": "Mostre Passate",
     "sanatciKart": "Artista",
     "sanatciAciklama": "Sull'artista"
   },
   "sanatci": {
-    "title": "Artista",
+    "title": "Artısta",
     "isim": "Ersun Türköz",
     "body": "Dopo la formazione in ingegneria, ha studiato pittura presso l'Atelier Hızır Tepeev e ceramica presso l'Atelier Meral Öztürk.\n\nNei suoi dipinti e nelle sue sculture in ceramica interpreta, con una sensibilità contemporanea, le antiche storie che prendono forma tra amore, vita e morte, e il mondo interiore dell'essere umano.\n\nLa collezione Il Silenzio del Cavallo di Troia porta la storia del passato nel presente attraverso il Cavallo di Troia, testimone immortale di Troia."
   },
@@ -37,11 +37,11 @@
     "ilgileniyorum": "Sono interessato a quest'opera"
   },
   "ilgiForm": {
-    "baslik": "Sono interessato a quest'opera",
+    "baslik": "Sono ınteressato a quest'opera",
     "adSoyad": "Nome e Cognome",
-    "eposta": "Email",
-    "telefon": "Numero di Telefono",
-    "gonder": "Invia",
+    "eposta": "Emaıl",
+    "telefon": "Numero dı Telefono",
+    "gonder": "Invıa",
     "gonderiliyor": "Invio in corso...",
     "geri": "Indietro",
     "zorunlu": "Questo campo è obbligatorio",
@@ -50,7 +50,7 @@
     "hataMesaj": "Si è verificato un problema. Riprova o contattaci tramite la pagina dei contatti."
   },
   "iletisim": {
-    "title": "Contatti",
+    "title": "Contattı",
     "isim": "Ersun Türköz",
     "instagram": "Instagram",
     "eposta": "Email",
