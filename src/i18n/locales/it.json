@@ -1,13 +1,13 @@
 {
   "nav": {
     "sanatci": "Artısta",
-    "koleksiyonlar": "Collezionı",
+    "koleksiyonlar": "Collezıonı",
     "sergiler": "Mostre",
     "iletisim": "Contattı",
     "menu": "Menu"
   },
   "genel": {
-    "geri": "Indietro"
+    "geri": "Indıetro"
   },
   "home": {
     "title": "Ersun Türköz",
@@ -29,6 +29,9 @@
   "seriDetay": {
     "bulunamadi": "Questa collezione non è stata trovata.",
     "anasayfayaDon": "Torna alla home"
+  },
+  "sergiler": {
+  "gorselleriGor": "Clicca per vedere le immagini"
   },
   "eserModal": {
     "kapat": "Chiudi",

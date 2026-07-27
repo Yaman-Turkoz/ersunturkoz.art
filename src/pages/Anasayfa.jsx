@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { AnimatePresence, motion } from 'motion/react'
+import { Images } from 'lucide-react'
 import { client, urlFor } from '../lib/sanity'
 import { SERILER_ANASAYFA_QUERY, SERGILER_QUERY, SITE_AYARLARI_QUERY } from '../lib/queries'
 import { getLocalized } from '../lib/getLocalized'
@@ -173,54 +174,62 @@ function Anasayfa() {
       </motion.section>
 
       {sergiler.length > 0 && (
-        <motion.section className="sergiler" id="sergiler" {...sectionReveal}>
+        <section className="sergiler" id="sergiler">
           <div className="sergiler-ic">
-            <DilGecis as="h2" className="bolum-baslik">
-              {t('home.gecmisSergiler')}
-            </DilGecis>
+            <motion.div {...sectionReveal}>
+              <DilGecis as="h2" className="bolum-baslik">
+                {t('home.gecmisSergiler')}
+              </DilGecis>
+            </motion.div>
             <div className="sergi-liste">
               {sergiler.map((sergi) => (
-                <div key={sergi._id} className="sergi-satir">
-                  <button
-                    type="button"
-                    className="sergi-gorsel"
-                    onClick={() => setSeciliSergi(sergi)}
-                    aria-label={sergi.baslik}
-                  >
-                    {sergi.gorseller?.[0] && (
-                      <img
-                        src={urlFor(sergi.gorseller[0]).width(600).height(450).fit('crop').url()}
-                        alt=""
-                      />
-                    )}
-                    <span className="sergi-gorsel-overlay" aria-hidden="true">
-                      <svg
-                        viewBox="0 0 24 24"
-                        width="28"
-                        height="28"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="1.7"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      >
-                        <path d="M15 3h6v6" />
-                        <path d="M9 21H3v-6" />
-                        <path d="M21 3l-7 7" />
-                        <path d="M3 21l7-7" />
-                      </svg>
+                <motion.div key={sergi._id} className="sergi-satir" {...sectionReveal}>
+                  <div className="sergi-gorsel-sutun">
+                    <button
+                      type="button"
+                      className="sergi-gorsel"
+                      onClick={() => setSeciliSergi(sergi)}
+                      aria-label={sergi.baslik}
+                    >
+                      {sergi.gorseller?.[0] && (
+                        <img
+                          src={urlFor(sergi.gorseller[0]).width(600).height(450).fit('crop').url()}
+                          alt=""
+                        />
+                      )}
+                      <span className="sergi-gorsel-overlay" aria-hidden="true">
+                        <svg
+                          viewBox="0 0 24 24"
+                          width="28"
+                          height="28"
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth="1.7"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        >
+                          <path d="M15 3h6v6" />
+                          <path d="M9 21H3v-6" />
+                          <path d="M21 3l-7 7" />
+                          <path d="M3 21l7-7" />
+                        </svg>
+                      </span>
+                    </button>
+                    <span className="sergi-gorsel-ipucu">
+                      <Images size={14} strokeWidth={2} aria-hidden="true" />
+                      {t('sergiler.gorselleriGor')}
                     </span>
-                  </button>
+                  </div>
 
                   <div className="sergi-metin">
                     <h3>{sergi.baslik}</h3>
                     {sergi.aciklama && <p>{sergi.aciklama}</p>}
                   </div>
-                </div>
+                </motion.div>
               ))}
             </div>
           </div>
-        </motion.section>
+        </section>
       )}
 
       <AnimatePresence>

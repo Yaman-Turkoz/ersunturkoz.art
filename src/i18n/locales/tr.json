@@ -30,6 +30,9 @@
     "bulunamadi": "Bu seri bulunamadı.",
     "anasayfayaDon": "Anasayfaya dön"
   },
+  "sergiler": {
+  "gorselleriGor": "Görselleri görüntülemek için tıklayın"
+  },
   "eserModal": {
     "kapat": "Kapat",
     "oncekiGorsel": "Önceki görsel",
