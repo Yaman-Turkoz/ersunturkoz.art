@@ -73,5 +73,10 @@
     "sanatci": "Sanatçı — Ersun Türköz",
     "iletisim": "İletişim — Ersun Türköz",
     "suffix": "Ersun Türköz"
+  },
+  "notFound": {
+    "baslik": "Sayfa Bulunamadı",
+    "aciklama": "Aradığınız sayfa bulunamadı ya da taşınmış olabilir.",
+    "anasayfa": "Anasayfaya Dön"
   }
 }

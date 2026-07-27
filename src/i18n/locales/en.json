@@ -73,5 +73,10 @@
     "sanatci": "Artist — Ersun Türköz",
     "iletisim": "Contact — Ersun Türköz",
     "suffix": "Ersun Türköz"
+  },
+  "notFound": {
+    "baslik": "Page Not Found",
+    "aciklama": "The page you are looking for does not exist or may have been moved.",
+    "anasayfa": "Back to Home"
   }
 }

@@ -7,6 +7,7 @@ import Anasayfa from './pages/Anasayfa'
 import Sanatci from './pages/Sanatci'
 import SeriDetay from './pages/SeriDetay'
 import Iletisim from './pages/Iletisim'
+import NotFound from './pages/NotFound'
 
 function App() {
   const location = useLocation()
@@ -28,6 +29,7 @@ function App() {
             <Route path="/sanatci" element={<Sanatci />} />
             <Route path="/eserler/:seriSlug" element={<SeriDetay />} />
             <Route path="/iletisim" element={<Iletisim />} />
+            <Route path="*" element={<NotFound />} />
           </Routes>
         </motion.main>
       </AnimatePresence>
