@@ -12,8 +12,28 @@ export const sergi = defineType({
     defineField({
       name: 'baslik',
       title: 'Başlık',
-      type: 'string',
-      validation: (rule) => rule.required(),
+      type: 'object',
+      options: {columns: 1},
+      fields: [
+        defineField({
+          name: 'tr',
+          title: 'Başlık (Türkçe)',
+          type: 'string',
+          validation: (rule) => rule.required(),
+        }),
+        defineField({
+          name: 'en',
+          title: 'Başlık (English) — opsiyonel',
+          type: 'string',
+          description: 'Boş bırakırsanız bu dilde Türkçesi gösterilir.',
+        }),
+        defineField({
+          name: 'it',
+          title: 'Başlık (Italiano) — opsiyonel',
+          type: 'string',
+          description: 'Boş bırakırsanız bu dilde Türkçesi gösterilir.',
+        }),
+      ],
     }),
     defineField({
       name: 'slug',
@@ -21,16 +41,37 @@ export const sergi = defineType({
       type: 'slug',
       description:
         'Opsiyonel. Yalnızca özel açıklama gösterilecek sergiler için gerekir. ' +
-        'Troya Atı sergisi için değeri "troya-atinin-sessizligi" olmalı.',
+        'Troya Atı sergisi için değeri "troya-atinin-sessizligi" olmalı. ' +
+        'Türkçe başlıktan üretilir, dile göre değişmez.',
       options: {
-        source: 'baslik',
+        source: 'baslik.tr',
         maxLength: 96,
       },
     }),
     defineField({
       name: 'aciklama',
       title: 'Açıklama',
-      type: 'text',
+      type: 'object',
+      options: {columns: 1},
+      fields: [
+        defineField({
+          name: 'tr',
+          title: 'Açıklama (Türkçe) — opsiyonel',
+          type: 'text',
+        }),
+        defineField({
+          name: 'en',
+          title: 'Açıklama (English) — opsiyonel',
+          type: 'text',
+          description: 'Boş bırakırsanız bu dilde Türkçesi gösterilir.',
+        }),
+        defineField({
+          name: 'it',
+          title: 'Açıklama (Italiano) — opsiyonel',
+          type: 'text',
+          description: 'Boş bırakırsanız bu dilde Türkçesi gösterilir.',
+        }),
+      ],
     }),
     defineField({
       name: 'gorseller',
@@ -50,7 +91,7 @@ export const sergi = defineType({
   ],
   preview: {
     select: {
-      title: 'baslik',
+      title: 'baslik.tr',
       media: 'gorseller.0',
     },
   },

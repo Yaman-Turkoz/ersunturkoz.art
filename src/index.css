@@ -1319,6 +1319,7 @@ main {
   margin: 24px 0 0;
   line-height: 1.75;
   color: var(--color-slate);
+  white-space: pre-line;
 }
 
 .eser-modal-ilgileniyorum {

@@ -187,14 +187,18 @@ function Anasayfa() {
               </DilGecis>
             </motion.div>
             <div className="sergi-liste">
-              {sergiler.map((sergi) => (
+              {sergiler.map((sergi) => {
+                const sergiBaslik = getLocalized(sergi.baslik, dil)
+                const sergiAciklama = getLocalized(sergi.aciklama, dil)
+                const ozelSiir = sergi.slug === TROYA_SERGI_SLUG
+                return (
                 <motion.div key={sergi._id} className="sergi-satir" {...sectionReveal}>
                   <div className="sergi-gorsel-sutun">
                     <button
                       type="button"
                       className="sergi-gorsel"
                       onClick={() => setSeciliSergi(sergi)}
-                      aria-label={sergi.baslik}
+                      aria-label={sergiBaslik}
                     >
                       {sergi.gorseller?.[0] && (
                         <img
@@ -227,15 +231,16 @@ function Anasayfa() {
                   </div>
 
                   <div className="sergi-metin">
-                    <h3>{sergi.baslik}</h3>
-                    {sergi.slug === TROYA_SERGI_SLUG ? (
+                    <DilGecis as="h3">{sergiBaslik}</DilGecis>
+                    {ozelSiir ? (
                       <TroyaSiir />
                     ) : (
-                      sergi.aciklama && <p>{sergi.aciklama}</p>
+                      sergiAciklama && <DilGecis as="p">{sergiAciklama}</DilGecis>
                     )}
                   </div>
                 </motion.div>
-              ))}
+                )
+              })}
             </div>
           </div>
         </section>

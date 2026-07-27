@@ -17,9 +17,9 @@ export const SERILER_ANASAYFA_QUERY = `
 export const SERGILER_QUERY = `
 *[_type == "sergi"] | order(orderRank asc) {
   _id,
-  baslik,
+  baslik{tr, en, it},
   "slug": slug.current,
-  aciklama,
+  aciklama{tr, en, it},
   gorseller
 }
 `
