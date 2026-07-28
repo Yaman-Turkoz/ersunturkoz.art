@@ -89,7 +89,7 @@ export const eser = defineType({
         list: [
           {value: 'available', title: 'Koleksiyona Açık (satışta)'},
           {value: 'artist', title: 'Sanatçı Koleksiyonunda (satışta)'},
-          {value: 'private', title: 'Özel Koleksiyonda (satışta değil)'},
+          {value: 'private', title: 'Bir Sanatseverin Koleksiyonunda (satışta değil)'},
           {value: 'museum', title: 'Müze Koleksiyonunda (satışta değil)'},
         ],
       },
