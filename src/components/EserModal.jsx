@@ -80,7 +80,12 @@ function EserModal({ eser, onClose }) {
                 )}
                 {aciklama && <p className="eser-modal-aciklama">{aciklama}</p>}
 
-                <p className="eser-modal-durum">{t(`eserDurumu.${durum}`)}</p>
+                <div className="eser-modal-durum-satir">
+                  <p className="eser-modal-durum">{t(`eserDurumu.${durum}`)}</p>
+                  {durum === 'private' && (
+                    <span className="eser-modal-durum-nokta" aria-hidden="true" />
+                  )}
+                </div>
 
                 <button
                   type="button"

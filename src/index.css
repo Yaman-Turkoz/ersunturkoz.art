@@ -1430,9 +1430,16 @@ main {
   white-space: pre-line;
 }
 
-.eser-modal-durum {
+/* Durum etiketi (çerçeve) + kırmızı nokta yatay grubu */
+.eser-modal-durum-satir {
   align-self: flex-start;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
   margin: 24px 0 0;
+}
+
+.eser-modal-durum {
   padding: 5px 12px;
   border: 1px solid rgba(26, 42, 68, 0.2);
   border-radius: 20px;
@@ -1442,6 +1449,15 @@ main {
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--color-slate);
+}
+
+/* Satılmış eser (private) için geleneksel galeri kırmızı noktası — çerçevenin dışında, sağda; dekoratif */
+.eser-modal-durum-nokta {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: #d32f2f;
+  flex-shrink: 0;
 }
 
 .eser-modal-ilgileniyorum {
